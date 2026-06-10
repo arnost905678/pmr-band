@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title data-key="headtitle">Měření Antén</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        .flags img {
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .flags img:hover {
+            transform: scale(1.1);
+        }
+
+        .flags {
+            display: flex;
+            gap: 5px;
+        }
+
+        .flag-btn {
+            font-size: 24px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+        }
+
+        .flag-btn img {
+            width: 45px;
+            height: 30px;
+            border-radius: 5px;
+            /* Volitelné - zaoblené rohy */
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- <body onload="changeLanguage('cs')"> -->
+    <div class="container">
+        <div class="d-flex justify-content-end"> <!-- Zarovnáme obsah doprava -->
+            <div id="flags" class="d-flex align-items-center"
+                style="height: 40px; overflow: hidden; background: white; padding: 5px; border-radius: 5px; box-shadow: 0px 2px 5px rgba(0,0,0,0.2);">
+                <button class="scroll-button" id="left-arrow"
+                    style="background: none; border: none; cursor: pointer;">&#9664;</button>
+                <div class="d-flex" id="flags-container"
+                    style="width: 150px; overflow: hidden; white-space: nowrap; scrollbar-width: none; -ms-overflow-style: none;">
+                    <div class="flags"><button class="flag-btn" data-lang="cs" onclick="changeLanguage('cs')"><img
+                                src="https://flagcdn.com/w320/cz.png" alt="Czech Republic"
+                                title="Czech Republic"></button></div>
+                    <div class="flags"><button class="flag-btn" data-lang="en" onclick="changeLanguage('en')"><img
+                                src="https://flagcdn.com/w320/gb.png" alt="United Kingdom"
+                                title="United Kingdom"></button></div>
+                    <div class="flags"><button class="flag-btn" data-lang="it" onclick="changeLanguage('it')"><img
+                                src="https://flagcdn.com/w320/it.png" alt="Italy" title="Italy"></button>
+                    </div>
+                    <div class="flags"><button class="flag-btn" data-lang="fr" onclick="changeLanguage('fr')"><img
+                                src="https://flagcdn.com/w320/fr.png" alt="France" title="France"></button>
+                    </div>
+                    <div class="flags"><button class="flag-btn" data-lang="ua" onclick="changeLanguage('ua')"><img
+                                src="https://flagcdn.com/w320/ua.png" alt="Ukraine" title="Ukraine"></button>
+                    </div>
+                    <div class="flags"><button class="flag-btn" data-lang="ru" onclick="changeLanguage('ru')"><img
+                                src="https://flagcdn.com/w320/ru.png" alt="Russia" title="Russia"></button>
+                    </div>
+                    <div class="flags"><button class="flag-btn" data-lang="pl" onclick="changeLanguage('pl')"><img
+                                src="https://flagcdn.com/w320/pl.png" alt="Poland" title="Poland"></button>
+                    </div>
+                    <div class="flags"><button class="flag-btn" data-lang="de" onclick="changeLanguage('de')"><img
+                                src="https://flagcdn.com/w320/de.png" alt="Germany" title="Germany"></button>
+                    </div>
+                    <div class="flags"><button class="flag-btn" data-lang="sk" onclick="changeLanguage('sk')"><img
+                                src="https://flagcdn.com/w320/sk.png" alt="Slovakia" title="Slovakia"></button>
+                    </div>
+                    <div class="flags"><button class="flag-btn" data-lang="es" onclick="changeLanguage('es')"><img
+                                src="https://flagcdn.com/w320/es.png" alt="Spain" title="Spain"></button>
+                    </div>
+                    <div class="flags"><button class="flag-btn" data-lang="nl" onclick="changeLanguage('nl')"><img
+                                src="https://flagcdn.com/w320/nl.png" alt="Netherlands" title="Netherlands"></button>
+                    </div>
+                    <div class="flags"><button class="flag-btn" data-lang="hu" onclick="changeLanguage('hu')"><img
+                                src="https://flagcdn.com/w320/hu.png" alt="Hungary" title="Hungary"></button>
+                    </div>
+                </div>
+                <button class="scroll-button" id="right-arrow"
+                    style="background: none; border: none; cursor: pointer;">&#9654;</button>
+            </div>
+        </div>
+
+        <h1 data-key="title" class="mb-4">Opravdu jde nahradit značkovou anténu čínskou napodobeninou?</h1>
+
+        <main>
+            <section>
+                <h2 data-key="block1">Představení autorů, testů a motivací</h2>
+                <h4 class="mt-4" data-key="block1Q1">Ruda OK2ZA</h4>
+                <p data-key="block1Q1Q1">Rudu asi znají skoro všichni olicencovaní, kdy je asi v naší republice nejlepší
+                    turistický průvodce leteckou dopravou, pokud potřebujete odbavit na přestupních letištích kdejakého
+                    totalitního státu až do cílového na konci světa. Což o to odbavit, tady se ale bavíme o 600kg trubek
+                    stožárů a antén, které musíte rychle vybalit pro pročichání na drogy a prohmatání pro určitě
+                    schované špiónské vybavení, a zase rychle zabalit pro stíhání odletu. Popřípadě jako šéftrenér na
+                    surfování na ostrově bez dalších turistů s výškou ostrova 3m nad hladinou v oceánu se 7m vlnami. A
+                    ostatním musí stačit, že v některých světových tabulkách je skoro běžně se svou tlupou na 2. místě.
+                </p>
+                <p data-key="block1Q1Q2">Takže jsem věděl, koho oslovím s prosbou o měření. O zbytečné měření, jak jsem
+                    si myslel a asi né docela jediný.</p>
+                <h4 class="mt-4" data-key="block1Q2">Arnošt905</h4>
+                <p data-key="block1Q2Q1">Mně znají hlavně jako né zcela pochopitelného, kdy mám rád dálkovou
+                    cykloturistiku v partách, u kterých nikdo nečeká dojetí 650 - 1000km plánovaného putování. Pro
+                    cestování po eurostezkách na hranicích států, kde není ani mobilní signál, ani kde nabrat vodu,
+                    natož se někde ve stínu či v suchu schovat. A členem takové cyklobandy je praktický slepec s
+                    dohledem 9m, kdy rozezná ceduli 2x2m a nerozpozná barvu cedule, nebo důchodce 81let, nyní už má víc,
+                    ale tehdy jeho první slova byla při setkání "Se mnou nebudou problémy, už jsem si předplatil
+                    pohřeb." A taky že s ním problémy nejsou :-D Popř. borec po mrtvici, kdy mu jedna ruka visí na gumě
+                    od trenek zavěšená na řídítku a šlape jen jednou nohou, nebo šikula, kterého vytáhli z výtahové
+                    šachty a za 2 roky v obdobném stavu zase sedlá kolo :-D Ano, takové bývá složení týmů našich expedic
+                    běžně, a tak vysílačka hraje dost velkou roli a navíc jsou to taky hračky, jsme přeci jen velcí
+                    kluci.</p>
+                <p data-key="block1Q2Q2">Zkuste v tomto složení jednou rukou za jízdy vytáčet na šudličovém telefonu
+                    skupinové volání, že.</p>
+                <p data-key="block1Q2Q3">První Motorolu 5450 nebo Intek MT400 jsem utopil, a tak jsem si koupil Motorolu
+                    T-82 Extreme. Nikomu to nedoporučuju zopakovat, bo na protipovodňových valech řeky Odry na
+                    vzdálenost ztráty viditelnosti přes křoví kleklo spojení. Ono ostatně není ani ve městech na zhruba
+                    600m po přejetí přes horizont, či jen a pouze za roh. Tak jsem si zaktivoval Alinco DJ-500, z čajná
+                    si poslal aku a vyrazil do lesů. No, 200m od televizního vysílače najednou ticho. Ale opravdu
+                    ticho... Tak jsem si vyhlídl TYT TH-UV99 a kupoval a kupoval kdejaké antény pro zlepšení příjmu.</p>
+                <p data-key="block1Q2Q4">Jako co mám tady vysvětlovat, když jste se starcem na obhlídce přespání,
+                    najednou se přiřítí slepec, že ztratil mrtvičáka, a Vy vyjedete na objížďku asi 6 německých vesnic
+                    bez mobilního i vysílačkového signálu... Když jako nahluchlý musíš slyšet, tak prostě musíš slyšet.
+                </p>
+                <p data-key="block1Q2Q5">Naštěstí antény dorazily, Ruda má měřák a k tomu měl i čas.</p>
+            </section>
+            <img src="sestava-40procent.jpg" data-key="block1QimgQallQ1" alt="Katalog materiálu"
+                class="img-fluid mb-4 mt-4" style="max-width: 100%; height: auto;">
+            <section>
+                <h2 data-key="block2">Metodika měření antén</h2>
+                <p data-key="block2Q1">To si takto v únoru počkáte na slunečné počasí, bezvětří, naměříte 13*C ve 14:30
+                    24.2.2025, položíte to všechno na přední kapotu osobáku, vytáhnete bonzblok, načrtnete tabulku a
+                    začnete zajímavých 45 minut. Na fotce kromě Rudova měřáku vidíte od shora:</p>
+                <ul>
+                    <li>Diamond SRJ77CA sma-female</li>
+                    <li>Diamond RH771 sma-male</li>
+                    <li>Retevis RHD771 sma-male</li>
+                    <li data-key="block2Q5">Taktický prut 33cm</li>
+                    <li data-key="block2Q6">Taktický prut 48cm</li>
+                    <li data-key="block2Q7">Taktický prut 124cm</li>
+                    <li>TYT TH-UV99</li>
+                    <li>Alinco DJ-500</li>
+                    <li data-key="block2Q10">Cívky taktických antén sma-female a sma-male</li>
+                    <li>SMA-SMA adapter m/m</li>
+                    <li data-key="block2Q12">Měřák RigExpert AA-1400 s redukci na sma-female</li>
+
+                </ul>
+            </section>
+            <h2 data-key="block3">Ilustrační náhledy na měřák</h2>
+            <p data-key="block3Q1">Nejdříve na slunci.</p>
+            <img src="merak1.jpg" alt="Pohled na slunci" class="img-fluid" style="max-width: 100%; height: auto;"
+                data-toggle="modal" data-target="#imageModal" data-key="block3QimgQ1">
+            <br><br>
+            <p data-key="block3Q2">Poté s profesionálním zastíněním.</p>
+            <img src="merak2.jpg" alt="Profesionální odstínění" class="img-fluid mb-4"
+                style="max-width: 100%; height: auto;" data-toggle="modal" data-target="#imageModal"
+                data-key="block3QimgQ2">
+            <section>
+                <h2 data-key="block4">Tabulka vítězů</h2>
+                <p data-key="block4Q1">Co se týče samotných antén, tak překvapí originální pendrek Alinca, sice už
+                    památeční, ale na vyhození, a Retevis anténa, kterou jsem odsoudil a měření mi vydalo reparát, že
+                    problém byl počítačově mezi klávesnicí a žídlí, kdy jsem ji označil nepoužitelnou na 172MHz. Není
+                    nad zdravou sebedůvěru :-D Na kmitočtu 446 MHz jsme neměřili, bo jako proč, když žádnou z těch antén
+                    na PMR vysílání používat nemáme a vzdělanější či sečtělejší si potřebné odvodí.</p>
+                <p data-key="block4Q2">Co se týče naměřených hodnot, tak tady asi většina ví, že hodnota nad 2 u
+                    stacionárních antén je docela špatně, ale v případě ruček, kdy se protiváha mění s výškou nad zemí
+                    či blízko automobilu, tak se dají "použít" i do hodnoty zhruba 4. Od 5 je to už opravdu, ale opravdu
+                    špatně... Hodnota 20 vyadřuje nekonečno a není to veselé nekonečno Dana Nekonečného.</p>
+                <p data-key="block4Q3">Co se týče "taktických" antén, tak cívka by měla být pro každou délku jiná. Je
+                    ale "stejná" v rámci nákladů na kvalitu a navíc pro rozdílné konektory jiná. No, je i rozdílná u
+                    shodných konektorů... A hodnocení není úplně košér i pro mechanické provedení, kdy to není jen jeden
+                    pásek svinovacího metru, ale 2 spojené bříšky ven, a anténa je tak skládaná pro udržení tvaru.
+                    Parametr SWR se tak bude "plynule" zhoršovat používáním. Délku 124cm na ručce opravdu nechcete, bo
+                    reálně hrozí ulomení konektoru na ručce, a já tuto délku 124cm mám na kole připevněnou k prutu
+                    "bezpečnostní" vlaječky. Na poslech to nevadí.</p>
+                <p data-key="block4Q4">Vzhledem jen k jedné redukci na měřáku, jsme u antén s konektorem sma-female
+                    museli použít přechodku SMA-SMA m/m. Zcela určitě to nějaký vliv má, ale v tomto případě zcela
+                    určitě ignorovatelný.</p>
+            </section>
+            <div class="d-none d-md-block">
+                <table class="table table-striped mb-4 mt-4">
+                    <thead>
+                        <tr>
+                            <th scope="col" data-key="tabQmainQth">Anténa / SWR dle kmitočtu</th>
+                            <th scope="col">145 MHz</th>
+                            <th scope="col">172 MHz</th>
+                            <th scope="col">435 MHz</th>
+                            <th scope="col">442 MHz</th>
+                            <th scope="col">448 MHz</th>
+                        </tr>
+                        <tr>
+                            <td>Taktik 33cm sma-female</td>
+                            <td>1,7</td>
+                            <td>2,7</td>
+                            <td>3,2</td>
+                            <td>2,7</td>
+                            <td>2,4</td>
+                        </tr>
+                        <tr>
+                            <td>Taktik 48cm sma-female</td>
+                            <td>5,5</td>
+                            <td>3,9</td>
+                            <td>2</td>
+                            <td>1,7</td>
+                            <td>1,6</td>
+                        </tr>
+                        <tr>
+                            <td>Taktik 124cm sma-female</td>
+                            <td>2,5</td>
+                            <td>4</td>
+                            <td>1,33</td>
+                            <td>1,3</td>
+                            <td>1,38</td>
+                        </tr>
+                        <tr>
+                            <td>Diamond SRJ77CA sma-female</td>
+                            <td>3,8</td>
+                            <td>1,9</td>
+                            <td>2,2</td>
+                            <td>1,7</td>
+                            <td>1,37</td>
+                        </tr>
+                        <tr>
+                            <td>origo pendrek Alinco DJ-500 sma-female</td>
+                            <td>5,5</td>
+                            <td>5,5</td>
+                            <td>6,3</td>
+                            <td>5,8</td>
+                            <td>5,3</td>
+                        </tr>
+                        <tr>
+                            <td>Retevis RHD771 sma-male</td>
+                            <td>3,4</td>
+                            <td>1,5</td>
+                            <td>1,7</td>
+                            <td>2</td>
+                            <td>2,5</td>
+                        </tr>
+                        <tr>
+                            <td>Diamond RH771 sma-male</td>
+                            <td>4,7</td>
+                            <td>1,34</td>
+                            <td>1,7</td>
+                            <td>1,5</td>
+                            <td>1,6</td>
+                        </tr>
+                        <tr>
+                            <td>origo pendrek TYT TH-UV99 sma-male</td>
+                            <td>1,28</td>
+                            <td>20</td>
+                            <td>3,5</td>
+                            <td>3,2</td>
+                            <td>2,7</td>
+                        </tr>
+                        <tr>
+                            <td>Taktik 33cm sma-male</td>
+                            <td>3</td>
+                            <td>2,5</td>
+                            <td>9</td>
+                            <td>9,3</td>
+                            <td>9,4</td>
+                        </tr>
+                        <tr>
+                            <td>Taktik 48cm sma-male</td>
+                            <td>1,4</td>
+                            <td>1,29</td>
+                            <td>3,6</td>
+                            <td>3,3</td>
+                            <td>2,9</td>
+                        </tr>
+                        <tr>
+                            <td>Taktik 124cm sm-male</td>
+                            <td>2,9</td>
+                            <td>1,2</td>
+                            <td>3,2</td>
+                            <td>3,6</td>
+                            <td>4,1</td>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="d-block d-md-none">
+                <h4 class="mt-4" data-key="MobiltabQmainQth">Anténa / SWR dle kmitočtu Mhz</h4>
+                <table class="table table-striped mb-5 mt-4">
+                    <tr>
+                        <th colspan="5">Taktik 33cm sma-female</th>
+                    </tr>
+                    <tr>
+                        <th>145Mhz</th>
+                        <th>172MHz</th>
+                        <th>435MHz</th>
+                        <th>442MHz</th>
+                        <th>448Mhz</th>
+                    </tr>
+                    <tr>
+                        <td>1,7</td>
+                        <td>2,7</td>
+                        <td>3,2</td>
+                        <td>2,7</td>
+                        <td>2,4</td>
+                    </tr>
+                </table>
+                <table class="table table-striped mb-5 mt-4">
+                    <tr>
+                        <th colspan="5">Taktik 48cm sma-female</th>
+                    </tr>
+                    <tr>
+                        <th>145Mhz</th>
+                        <th>172MHz</th>
+                        <th>435MHz</th>
+                        <th>442MHz</th>
+                        <th>448Mhz</th>
+                    </tr>
+                    <tr>
+                        <td>5,5</td>
+                        <td>3,9</td>
+                        <td>2</td>
+                        <td>1,7</td>
+                        <td>1,6</td>
+                    </tr>
+                </table>
+                <table class="table table-striped mb-5 mt-4">
+                    <tr>
+                        <th colspan="5">Taktik 124cm sma-female</th>
+                    </tr>
+                    <tr>
+                        <th>145Mhz</th>
+                        <th>172MHz</th>
+                        <th>435MHz</th>
+                        <th>442MHz</th>
+                        <th>448Mhz</th>
+                    </tr>
+                    <tr>
+                        <td>2,5</td>
+                        <td>4</td>
+                        <td>1,33</td>
+                        <td>1,3</td>
+                        <td>1,38</td>
+                    </tr>
+                </table>
+                <table class="table table-striped mb-5 mt-4">
+                    <tr>
+                        <th colspan="5">Diamond SRJ77CA sma-female</th>
+                    </tr>
+                    <tr>
+                        <th>145Mhz</th>
+                        <th>172MHz</th>
+                        <th>435MHz</th>
+                        <th>442MHz</th>
+                        <th>448Mhz</th>
+                    </tr>
+                    <tr>
+                        <td>3,8</td>
+                        <td>1,9</td>
+                        <td>2,2</td>
+                        <td>1,7</td>
+                        <td>1,37</td>
+                    </tr>
+                </table>
+                <table class="table table-striped mb-5 mt-4">
+                    <tr>
+                        <th colspan="5">origo pendrek Alinco DJ-500 sma-female</th>
+                    </tr>
+                    <tr>
+                        <th>145Mhz</th>
+                        <th>172MHz</th>
+                        <th>435MHz</th>
+                        <th>442MHz</th>
+                        <th>448Mhz</th>
+                    </tr>
+                    <tr>
+                        <td>5,5</td>
+                        <td>5,5</td>
+                        <td>6,3</td>
+                        <td>5,8</td>
+                        <td>5,3</td>
+                    </tr>
+                </table>
+                <table class="table table-striped mb-5 mt-4">
+                    <tr>
+                        <th colspan="5">Retevis RHD771 sma-male</th>
+                    </tr>
+                    <tr>
+                        <th>145Mhz</th>
+                        <th>172MHz</th>
+                        <th>435MHz</th>
+                        <th>442MHz</th>
+                        <th>448Mhz</th>
+                    </tr>
+                    <tr>
+                        <td>3,4</td>
+                        <td>1,5</td>
+                        <td>1,7</td>
+                        <td>2</td>
+                        <td>2,5</td>
+                    </tr>
+                </table>
+                <table class="table table-striped mb-5 mt-4">
+                    <tr>
+                        <th colspan="5">Diamond RH771 sma-male</th>
+                    </tr>
+                    <tr>
+                        <th>145Mhz</th>
+                        <th>172MHz</th>
+                        <th>435MHz</th>
+                        <th>442MHz</th>
+                        <th>448Mhz</th>
+                    </tr>
+                    <tr>
+                        <td>4,7</td>
+                        <td>1,34</td>
+                        <td>1,7</td>
+                        <td>1,5</td>
+                        <td>1,6</td>
+                    </tr>
+                </table>
+                <table class="table table-striped mb-5 mt-4">
+                    <tr>
+                        <th colspan="5">origo pendrek TYT TH-UV99 sma-male</th>
+                    </tr>
+                    <tr>
+                        <th>145Mhz</th>
+                        <th>172MHz</th>
+                        <th>435MHz</th>
+                        <th>442MHz</th>
+                        <th>448Mhz</th>
+                    </tr>
+                    <tr>
+                        <td>1,28</td>
+                        <td>20</td>
+                        <td>3,5</td>
+                        <td>3,2</td>
+                        <td>2,7</td>
+                    </tr>
+                </table>
+                <table class="table table-striped mb-5 mt-4">
+                    <tr>
+                        <th colspan="5">Taktik 33cm sma-male</th>
+                    </tr>
+                    <tr>
+                        <th>145Mhz</th>
+                        <th>172MHz</th>
+                        <th>435MHz</th>
+                        <th>442MHz</th>
+                        <th>448Mhz</th>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>2,5</td>
+                        <td>9</td>
+                        <td>9,3</td>
+                        <td>9,4</td>
+                    </tr>
+                </table>
+                <table class="table table-striped mb-5 mt-4">
+                    <tr>
+                        <th colspan="5">Taktik 48cm sma-male</th>
+                    </tr>
+                    <tr>
+                        <th>145Mhz</th>
+                        <th>172MHz</th>
+                        <th>435MHz</th>
+                        <th>442MHz</th>
+                        <th>448Mhz</th>
+                    </tr>
+                    <tr>
+                        <td>1,4</td>
+                        <td>1,29</td>
+                        <td>3,6</td>
+                        <td>3,3</td>
+                        <td>2,9</td>
+                    </tr>
+                </table>
+                <table class="table table-striped mb-5 mt-4">
+                    <tr>
+                        <th colspan="5">Taktik 124cm sm-male</th>
+                    </tr>
+                    <tr>
+                        <th>145Mhz</th>
+                        <th>172MHz</th>
+                        <th>435MHz</th>
+                        <th>442MHz</th>
+                        <th>448Mhz</th>
+                    </tr>
+                    <tr>
+                        <td>2,9</td>
+                        <td>1,2</td>
+                        <td>3,2</td>
+                        <td>3,6</td>
+                        <td>4,1</td>
+                    </tr>
+                </table>
+            </div>
+            <h2 class="mb-4" data-key="block5">Shrnutí</h2>
+            <p data-key="block5Q1">V případě továrních antén pochopíte rčení, že něco "stojí to za pendrek". Jen tytová
+                je vhodná na amatérských 145MHz. Na taktické délce 124cm nbo 48cm je vidět vliv jiného provedení cívky,
+                v tomto případě dle konektoru, že výměnou cívky bude zářič buď na sdílených 172MHz nebo univerzálně na
+                70cm. Pobaveně jsme kvitovali, že všechny ty kombinace taktických antén velice pěkně vysílají na všemi
+                používaných kmitočtech od 660 do 780MHz... Ostatně, co čekat od antén uvedených původně pro mužiky ruské
+                armády s Beofangy UV-5R po napadení Ukrajiny v roce 2022, kdy se požaduje jen lepší příjem a zpětné
+                relace už nikdo ani nepředpokládá. U nich ale nepopíráme levnou nahraditelnost.</p>
+            <p class="mb-4" data-key="block5Q2">Nejen letmým pohledem na tabulku vidíme zcela překvapivě oba Diamondy
+                jako vítěze, kdy zaváhaly jen na 145MHz, na 3. místě Retevis RHD771, v podstatě skokan roku. Pak už jen
+                hračičkování s taktickýma anténama.</p>
+        </main>
+        <footer>
+            <p class="" style="margin-top: 50px; margin-bottom: 250px;" data-key="footer">&copy; 2/2025 Měření Antén zde
+                uveřejněno díky adminovi :-D I ty můžeš poskytnout svou anténu ke změření. Časem přibudou překlady a
+                antény CB na 27MHz.
+            </p>
+        </footer>
+    </div>
+    <script>
+        document.getElementById('left-arrow').addEventListener('click', function () {
+            document.getElementById('flags-container').scrollBy({ left: -50, behavior: 'smooth' });
+        });
+        document.getElementById('right-arrow').addEventListener('click', function () {
+            document.getElementById('flags-container').scrollBy({ left: 50, behavior: 'smooth' });
+        });
+
+        // Překlady pro různé jazyky
+        const translations = {
+            "cs": {
+                headtitle: "Měření Antén",
+                title: "Opravdu jde nahradit značkovou anténu čínskou napodobeninou?",
+                block1: "Představení autorů, testů a motivací",
+                block1Q1: "Ruda OK2ZA",
+                block1Q1Q1: "Rudu asi znají skoro všichni olicencovaní, kdy je asi v naší republice nejlepší turistický průvodce leteckou dopravou, pokud potřebujete odbavit na přestupních letištích kdejakého totalitního státu až do cílového na konci světa. Což o to odbavit, tady se ale bavíme o 600kg trubek stožárů a antén, které musíte rychle vybalit pro pročichání na drogy a prohmatání pro určitě schované špiónské vybavení, a zase rychle zabalit pro stíhání odletu. Popřípadě jako šéftrenér na surfování na ostrově bez dalších turistů s výškou ostrova 3m nad hladinou v oceánu se 7m vlnami. A ostatním musí stačit, že v některých světových tabulkách je skoro běžně se svou tlupou na 2. místě.",
+                block1Q1Q2: "Takže jsem věděl, koho oslovím s prosbou o měření. O zbytečné měření, jak jsem si myslel a asi né docela jediný.",
+                block1Q2: "Arnošt905",
+                block1Q2Q1: "Mně znají hlavně jako né zcela pochopitelného, kdy mám rád dálkovou cykloturistiku v partách, u kterých nikdo nečeká dojetí 650 - 1000km plánovaného putování. Pro cestování po eurostezkách na hranicích států, kde není ani mobilní signál, ani kde nabrat vodu, natož se někde ve stínu či v suchu schovat. A členem takové cyklobandy je praktický slepec s dohledem 9m, kdy rozezná ceduli 2x2m a nerozpozná barvu cedule, nebo důchodce 81let, nyní už má víc, ale tehdy jeho první slova byla při setkání \"Se mnou nebudou problémy, už jsem si předplatil pohřeb.\" A taky že s ním problémy nejsou :-D Popř. borec po mrtvici, kdy mu jedna ruka visí na gumě od trenek zavěšená na řídítku a šlape jen jednou nohou, nebo šikula, kterého vytáhli z výtahové šachty a za 2 roky v obdobném stavu zase sedlá kolo :-D Ano, takové bývá složení týmů našich expedic běžně, a tak vysílačka hraje dost velkou roli a navíc jsou to taky hračky, jsme přeci jen velcí kluci.",
+                block1Q2Q2: "Zkuste v tomto složení jednou rukou za jízdy vytáčet na šudličovém telefonu skupinové volání, že.",
+                block1Q2Q3: "První Motorolu 5450 nebo Intek MT400 jsem utopil, a tak jsem si koupil Motorolu T-82 Extreme. Nikomu to nedoporučuju zopakovat, bo na protipovodňových valech řeky Odry na vzdálenost ztráty viditelnosti přes křoví kleklo spojení. Ono ostatně není ani ve městech na zhruba 600m po přejetí přes horizont, či jen a pouze za roh. Tak jsem si zaktivoval Alinco DJ-500, z čajná si poslal aku a vyrazil do lesů. No, 200m od televizního vysílače najednou ticho. Ale opravdu ticho... Tak jsem si vyhlídl TYT TH-UV99 a kupoval a kupoval kdejaké antény pro zlepšení příjmu.",
+                block1Q2Q4: "Jako co mám tady vysvětlovat, když jste se starcem na obhlídce přespání, najednou se přiřítí slepec, že ztratil mrtvičáka, a Vy vyjedete na objížďku asi 6 německých vesnic bez mobilního i vysílačkového signálu... Když jako nahluchlý musíš slyšet, tak prostě musíš slyšet.",
+                block1Q2Q5: "Naštěstí antény dorazily, Ruda má měřák a k tomu měl i čas.",
+                block1QimgQallQ1: "Katalog materiálu",
+                block2: "Metodika měření antén",
+                block2Q1: "To si takto v únoru počkáte na slunečné počasí, bezvětří, naměříte 13°C ve 14:30 24.2.2025, položíte to všechno na přední kapotu osobáku, vytáhnete bonzblok, načrtnete tabulku a začnete zajímavých 45 minut. Na fotce kromě Rudova měřáku vidíte od shora:",
+                block2Q5: "Taktický prut 33cm",
+                block2Q6: "Taktický prut 48cm",
+                block2Q7: "Taktický prut 124cm",
+                block2Q10: "Cívky taktických antén sma-female a sma-male",
+                block2Q12: "Měřák RigExpert AA-1400 s redukcí na sma-female",
+                block3: "Ilustrační náhledy na měřák",
+                block3Q1: "Nejdříve na slunci.",
+                block3QimgQ1: "Pohled na slunci",
+                block3Q2: "Poté s profesionálním zastíněním.",
+                block3QimgQ2: "Profesionální odstínění",
+                block4: "Tabulka vítězů",
+                block4Q1: "Co se týče samotných antén, tak překvapí originální pendrek Alinca, sice už památeční, ale na vyhození, a Retevis anténa, kterou jsem odsoudil a měření mi vydalo reparát, že problém byl počítačově mezi klávesnicí a židlí, kdy jsem ji označil nepoužitelnou na 172MHz. Není nad zdravou sebedůvěru :-D Na kmitočtu 446 MHz jsme neměřili, bo jako proč, když žádnou z těch antén na PMR vysílání používat nemáme a vzdělanější či sečtělejší si potřebné odvodí.",
+                block4Q2: "Co se týče naměřených hodnot, tak tady asi většina ví, že hodnota nad 2 u stacionárních antén je docela špatně, ale v případě ruček, kdy se protiváha mění s výškou nad zemí či blízko automobilu, tak se dají \"použít\" i do hodnoty zhruba 4. Od 5 je to už opravdu, ale opravdu špatně... Hodnota 20 vyadřuje nekonečno a není to veselé nekonečno Dana Nekonečného.",
+                block4Q3: "Co se týče \"taktických\" antén, tak cívka by měla být pro každou délku jiná. Je ale \"stejná\" v rámci nákladů na kvalitu a navíc pro rozdílné konektory jiná. No, je i rozdílná u shodných konektorů... A hodnocení není úplně košér i pro mechanické provedení, kdy to není jen jeden pásek svinovacího metru, ale 2 spojené bříšky ven, a anténa je tak skládaná pro udržení tvaru. Parametr SWR se tak bude \"plynule\" zhoršovat používáním. Délku 124cm na ručce opravdu nechcete, bo reálně hrozí ulomení konektoru na ručce, a já tuto délku 124cm mám na kole připevněnou k prutu \"bezpečnostní\" vlaječky. Na poslech to nevadí.",
+                block4Q4: "Vzhledem jen k jedné redukci na měřáku, jsme u antén s konektorem sma-female museli použít přechodku SMA-SMA m/m. Zcela určitě to nějaký vliv má, ale v tomto případě zcela určitě ignorovatelný.",
+                tabQmainQth: "Anténa / SWR dle kmitočtu",
+                MobiltabQmainQth: "Anténa / SWR dle kmitočtu Mhz",
+                block5: "Shrnutí",
+                block5Q1: "V případě továrních antén pochopíte rčení, že něco \"stojí to za pendrek\". Jen tytová je vhodná na amatérských 145MHz. Na taktické délce 124cm nebo 48cm je vidět vliv jiného provedení cívky, v tomto případě dle konektoru, že výměnou cívky bude zářič buď na sdílených 172MHz nebo univerzálně na 70cm. Pobaveně jsme kvitovali, že všechny ty kombinace taktických antén velice pěkně vysílají na všemi používaných kmitočtech od 660 do 780MHz... Ostatně, co čekat od antén uvedených původně pro mužiky ruské armády s Beofangy UV-5R po napadení Ukrajiny v roce 2022, kdy se požaduje jen lepší příjem a zpětné relace už nikdo ani nepředpokládá. U nich ale nepopíráme levnou nahraditelnost.",
+                block5Q2: "Nejen letmým pohledem na tabulku vidíme zcela překvapivě oba Diamondy jako vítěze, kdy zaváhaly jen na 145MHz, na 3. místě Retevis RHD771, v podstatě skokan roku. Pak už jen hračičkování s taktickýma anténama.",
+                footer: "© 2/2025 Měření Antén zde uveřejněno díky adminovi :-D I ty můžeš poskytnout svou anténu ke změření. Časem přibudou měření antén CB na 27MHz. Pokud není uvedeno jinak, tak překlady z češtiny do dalších jazyků jsou vytvořeny strojově."
+            },
+            "en": {
+                headtitle: "Antenna Measurement",
+                title: "Can a Branded Antenna Really Be Replaced by a Chinese Imitation?",
+                block1: "Introduction of Authors, Tests, and Motivations",
+                block1Q1: "Ruda OK2ZA",
+                block1Q1Q1: "Most licensed radio enthusiasts probably know Ruda. In our country, he is arguably the best tour guide for air travel, especially when it comes to navigating through transfer airports in totalitarian states all the way to the final destination at the end of the world. But we are not just talking about baggage handling; rather, we are talking about 600 kg of mast pipes and antennas that need to be quickly unpacked for drug-sniffing checks, inspected for hidden spy equipment, and then repacked in time for the flight. Or perhaps as a chief trainer for surfing on a deserted island with an elevation of just 3 meters above sea level and 7 meter waves. For others, it may be enough to know that in some world rankings, he and his team often land in second place.",
+                block1Q1Q2: "So I knew exactly who to ask for the measurements. I thought it was a pointless measurement, and I wasn’t the only one who believed that.",
+                block1Q2: "Arnošt905",
+                block1Q2Q1: "I am mostly known as someone not entirely easy to understand. I enjoy long-distance cycling tours with groups where no one expects to complete the planned 650–1000 km journey. I travel along Euro-trails at state borders where there is neither mobile signal nor access to water, let alone shelter from sun or rain. One such cycling team member is practically blind, with a 9 meter visual range he can recognize a 2x2 meter sign but cannot distinguish its color. Another member is an 81-year-old pensioner (now even older), whose first words upon joining were: 'I won’t be a problem; I’ve already prepaid my funeral.' And indeed, he never was a problem! Then there was a guy who had a stroke, with one arm hanging from his waistband and pedaling with just one leg, or another member who was rescued from an elevator shaft and was back on a bike in a similar state two years later. This is the usual composition of our expedition teams, where a radio plays a crucial role. Plus, they’re just fun to use we’re still big kids at heart.",
+                block1Q2Q2: "Try dialing a group call on a touchscreen phone with one hand while riding in such a setup. Not easy, right?",
+                block1Q2Q3: "I drowned my first Motorola 5450 and Intek MT400, so I bought a Motorola T-82 Extreme. I wouldn’t recommend repeating that mistake, as the connection failed on the flood embankments of the Odra River as soon as visibility was lost behind bushes. The same happens in cities after crossing a horizon or simply going around a corner, at about 600 meters. So, I activated my Alinco DJ-500, got a battery from China, and headed into the woods. About 200 meters from a TV transmitter, total silence... real silence. Then, I looked into the TYT TH-UV99 and started buying all kinds of antennas to improve reception.",
+                block1Q2Q4: "What more can I explain? Imagine scouting an overnight spot with the old-timer when suddenly the blind guy rushes in, saying he lost the stroke survivor. You set out to search across six German villages with neither mobile nor radio signal. If you need to hear in such situations, you simply have to hear.",
+                block1Q2Q5: "Fortunately, the antennas arrived, Ruda had a measurement device, and he had the time.",
+                block1QimgQallQ1: "Material Catalog",
+                block2: "Antenna Measurement Methodology",
+                block2Q1: "So, on a sunny, windless February day, you measure 13°C at 2:30 PM on February 24, 2025. You lay everything on the hood of a car, pull out a notepad, sketch a table, and embark on an interesting 45-minute session. In the photo, aside from Ruda’s measuring device, you can see from the top:",
+                block2Q5: "33cm Tactical Whip",
+                block2Q6: "48cm Tactical Whip",
+                block2Q7: "124cm Tactical Whip",
+                block2Q10: "Tactical Antenna Coils - SMA-Female and SMA-Male",
+                block2Q12: "RigExpert AA-1400 with SMA-Female Adapter",
+                block3: "Illustrative Views of the Measuring Device",
+                block3Q1: "First in sunlight.",
+                block3QimgQ1: "View in Sunlight",
+                block3Q2: "Then with professional shading.",
+                block3QimgQ2: "Professional Shading",
+                block4: "Winner’s Table",
+                block4Q1: "Regarding the antennas themselves, the original Alinco stub surprisingly performs well, despite being a relic ready for disposal. The Retevis antenna, which I had dismissed, proved me wrong it wasn’t unusable at 172 MHz after all. No substitute for healthy self-confidence! We didn’t measure at 446 MHz, because why would we? None of these antennas are intended for PMR transmissions, and those more knowledgeable can deduce the necessary details.",
+                block4Q2: "As for the measured values, most know that an SWR above 2 is problematic for stationary antennas. However, for handheld radios, where counterpoise changes with ground height or proximity to a vehicle, values up to about 4 are still ‘usable.’ From 5 onwards, it’s really bad… and at 20, it means infinite SWR not the happy kind of infinity like Dan Nekonečný’s.",
+                block4Q3: "Regarding 'tactical' antennas, the coil should be different for each length, but due to cost-cutting, it’s often the same. Even antennas with identical connectors show differences. The mechanical design is also questionable it's not just one strip of a retractable tape measure but two joined back-to-back, affecting its shape retention. SWR will 'gradually' worsen with use. You really don’t want a 124cm antenna on a handheld, as it risks breaking the connector. I mount my 124cm one on my bike’s safety flag pole. It works fine for listening.",
+                block4Q4: "Due to only having one adapter on the measuring device, we had to use an SMA-SMA (M/M) adapter for SMA-Female antennas. While it surely has some impact, in this case, it’s negligible.",
+                tabQmainQth: "Antenna / SWR by Frequency",
+                block5: "Summary",
+                block5Q1: "With factory antennas, the phrase 'not worth a damn' makes sense. Only the TYT one is suitable for amateur 145 MHz. The tactical antennas at 124cm or 48cm show the effect of coil design, where different coils could optimize performance for shared 172 MHz or 70 cm bands. We amusingly noted that all tactical antenna variations performed excellently on commonly used frequencies between 660–780 MHz… But what do you expect from antennas originally intended for Russian army operators using Baofeng UV-5Rs during the 2022 Ukraine invasion? They were meant for reception, not transmission feedback. However, they do offer cheap replaceability.",
+                block5Q2: "Looking at the table, the Diamonds surprisingly emerge as winners, struggling only at 145 MHz. In third place is the Retevis RHD771 a real underdog. Beyond that, it’s just a playground of tactical antenna variations.",
+                footer: "© 2/2025 Antenna measurements published here thanks to the admin :-D You can also provide your antenna for measurement. Over time, measurements of CB antennas on 27MHz will be added. Unless otherwise stated, translations from Czech to other languages ​​are machine-generated."
+            }
+            ,
+            "de": {
+                "headtitle": "Antennenmessung",
+                "title": "Kann eine Markenantenne wirklich durch eine chinesische Nachbildung ersetzt werden?",
+                "block1": "Vorstellung der Autoren, Tests und Motivation",
+                "block1Q1": "Ruda OK2ZA",
+                "block1Q1Q1": "Ruda ist wohl den meisten lizenzierten Funkamateuren bekannt. Er ist vermutlich der beste Reiseleiter für Luftverkehr in unserer Republik, wenn es darum geht, Menschen durch die Transitflughäfen totalitärer Staaten bis ans Ziel am anderen Ende der Welt zu bringen. Aber das ist noch nichts gegen die Herausforderung, 600 kg Antennenmasten und Rohre durch den Zoll zu bringen, sie für eine Drogenkontrolle auszupacken und schnell wieder einzupacken, um den Anschlussflug zu erwischen. Oder als Cheftrainer für Wellenreiten auf einer Insel ohne Touristen mit einer Höhe von 3 m über dem Meeresspiegel und 7 m hohen Wellen. Und für den Rest reicht es zu wissen, dass er in manchen internationalen Ranglisten mit seiner Gruppe regelmäßig auf dem zweiten Platz landet.",
+                "block1Q1Q2": "Also wusste ich, wen ich für die Messung fragen sollte. Eine überflüssige Messung, dachte ich – und vermutlich nicht nur ich.",
+                "block1Q2": "Arnošt905",
+                "block1Q2Q1": "Mich kennt man hauptsächlich als jemanden, der schwer zu verstehen ist – ich liebe Fernradreisen mit Gruppen, die keiner für fähig hält, die geplanten 650–1000 km zu schaffen. Auf Eurovelo-Routen an Staatsgrenzen, wo es weder Handysignal noch Wasser gibt, geschweige denn Schutz vor Sonne oder Regen. Ein Mitglied dieser Radtruppe ist ein fast blinder Mann mit 9 m Sehweite – er erkennt zwar ein 2×2 m Schild, aber nicht dessen Farbe. Oder ein 81-jähriger Rentner (inzwischen älter), dessen erste Worte bei unserem Treffen waren: „Mit mir gibt es keine Probleme, ich habe meine Beerdigung schon bezahlt.“ Und tatsächlich gab es mit ihm keine Probleme. Oder ein Kerl nach einem Schlaganfall, dessen eine Hand mit einem Gummiband an den Lenker gehängt ist und der nur mit einem Bein tritt. Oder ein Typ, den sie aus einem Aufzugsschacht gezogen haben und der zwei Jahre später wieder Rad fährt. Ja, so sieht unsere Expeditionsgruppe aus – und Funkgeräte spielen eine große Rolle. Und außerdem sind sie Spielzeuge – wir sind schließlich große Jungs.",
+                "block1Q2Q2": "Versuch mal, in dieser Gruppe während der Fahrt ein Gruppengespräch mit einem Smartphone zu starten – mit einer Hand.",
+                "block1Q2Q3": "Meine erste Motorola 5450 oder Intek MT400 habe ich versenkt, also habe ich mir eine Motorola T-82 Extreme gekauft. Das würde ich niemandem empfehlen – auf den Hochwasserschutzdämmen der Oder brach die Verbindung schon außer Sichtweite durch Büsche ab. Und selbst in der Stadt funktioniert sie nur auf etwa 600 m, wenn man über eine Kuppe oder um eine Ecke fährt. Also aktivierte ich mein Alinco DJ-500, bestellte Akkus aus China und zog los in die Wälder. 200 m vom Fernsehsender entfernt – absolute Stille. Wirklich absolute Stille... Also entschied ich mich für die TYT TH-UV99 und begann, verschiedene Antennen zu kaufen, um den Empfang zu verbessern.",
+                "block1Q2Q4": "Was soll ich noch erklären? Wenn du mit einem alten Mann einen Schlafplatz suchst, ein Blinder plötzlich herbeistürzt und schreit, dass er den Schlaganfallpatienten verloren hat, und du sechs deutsche Dörfer ohne Handysignal oder Funkverbindung durchfahren musst... Wenn du trotz Gehörproblemen hören MUSST, dann musst du eben hören.",
+                "block1Q2Q5": "Glücklicherweise kamen die Antennen an, Ruda hatte ein Messgerät – und er hatte Zeit.",
+                "block1QimgQallQ1": "Materialkatalog",
+                "block2": "Methodik der Antennenmessung",
+                "block2Q1": "Man wartet also im Februar auf sonniges, windstilles Wetter, misst um 14:30 Uhr am 24.02.2025 angenehme 13 °C, legt alles auf die Motorhaube eines Autos, zückt einen Notizblock, skizziert eine Tabelle – und startet eine spannende 45-minütige Messung. Auf dem Foto, neben Rudis Messgerät, von oben nach unten:",
+                "block2Q5": "Taktische Antenne 33 cm",
+                "block2Q6": "Taktische Antenne 48 cm",
+                "block2Q7": "Taktische Antenne 124 cm",
+                "block2Q10": "Spulen der taktischen Antennen (SMA-Female und SMA-Male)",
+                "block2Q12": "Messgerät RigExpert AA-1400 mit Adapter auf SMA-Female",
+                "block3": "Illustrative Ansichten des Messgeräts",
+                "block3Q1": "Zuerst in der Sonne.",
+                "block3QimgQ1": "Ansicht in der Sonne",
+                "block3Q2": "Dann mit professioneller Abschattung.",
+                "block3QimgQ2": "Professionelle Abschattung",
+                "block4": "Tabelle der Gewinner",
+                "block4Q1": "Bei den Antennen überrascht das originale Alinco-Gummi, das zwar alt, aber nicht völlig nutzlos ist. Und die Retevis-Antenne, die ich bereits abgeschrieben hatte – aber die Messung zeigte, dass der Fehler vor dem Computer saß. Ich hatte sie fälschlicherweise für unbrauchbar auf 172 MHz gehalten. Ein Hoch auf gesundes Selbstvertrauen. :-D Auf 446 MHz haben wir nicht gemessen – warum auch, wenn diese Antennen ohnehin nicht für PMR gedacht sind und jeder Informierte die Werte ableiten kann.",
+                "block4Q2": "Die meisten wissen, dass ein SWR-Wert über 2 bei stationären Antennen schlecht ist. Bei Handfunkgeräten, bei denen sich die Gegenmasse durch Bodenhöhe oder die Nähe eines Autos verändert, kann man Werte bis 4 noch akzeptieren. Ab 5 wird es wirklich, wirklich schlecht... Ein Wert von 20 bedeutet Unendlichkeit – und das ist kein lustiges Unendlichkeit.",
+                "block4Q3": "Bei den „taktischen“ Antennen sollte jede Länge eine eigene Spule haben. Tatsächlich sind die Spulen jedoch gleich – aus Kostengründen. Und sie unterscheiden sich je nach Stecker. Selbst bei gleichen Steckern sind sie nicht identisch... Mechanisch sind sie ebenfalls fragwürdig: Statt eines einzigen Bandes bestehen sie aus zwei, die Bauch an Bauch verbunden sind. Dadurch hält die Antenne zwar die Form, aber der SWR-Wert wird sich mit der Nutzung verschlechtern. Eine Länge von 124 cm an einem Handfunkgerät will man wirklich nicht – das könnte den Anschluss abbrechen. Ich habe diese 124 cm lange Antenne daher an einer Sicherheitsflagge auf meinem Fahrrad montiert. Zum Hören reicht das.",
+                "block4Q4": "Da wir nur einen Adapter auf dem Messgerät hatten, mussten wir für SMA-Female-Antennen einen SMA-SMA (m/m) Adapter verwenden. Das hat sicher einen Einfluss – aber in diesem Fall ist er zu vernachlässigen.",
+                "tabQmainQth": "Antenne / SWR nach Frequenz",
+                "block5": "Zusammenfassung",
+                "block5Q1": "Bei Werksantennen versteht man das Sprichwort „Das ist für die Katz“. Nur die TYT-Antenne taugt auf 145 MHz für Amateurfunk. Bei den taktischen Antennen mit 124 cm und 48 cm sieht man den Einfluss der unterschiedlichen Spulenkonstruktionen je nach Stecker – durch Spulentausch wird die Antenne entweder für 172 MHz oder universell für 70 cm nutzbar. Interessant ist, dass alle Kombinationen der taktischen Antennen hervorragend auf 660–780 MHz senden – die bevorzugten Frequenzen der russischen Armee seit dem Überfall auf die Ukraine 2022. Bei denen kommt es eh nur auf besseren Empfang an – die Rückmeldung interessiert niemanden. Aber gut, sie sind billig ersetzbar.",
+                "block5Q2": "Ein Blick auf die Tabelle zeigt: Die beiden Diamond-Antennen sind die Gewinner, schwächeln nur auf 145 MHz. Auf Platz 3 folgt die Retevis RHD771 – der Überraschungssieger. Danach beginnt das Spiel mit den taktischen Antennen.",
+                "footer": "© 2/2025 Antennenmessungen hier veröffentlicht, danke an den Admin :-D Ihr könnt auch gerne eure Antenne zur Messung mitbringen. Im Laufe der Zeit werden auch Messungen von CB-Antennen auf 27MHz hinzukommen. Sofern nicht anders angegeben, werden Übersetzungen aus dem Tschechischen in andere Sprachen maschinell erstellt."
+            }
+            ,
+            "ru": {
+                "headtitle": "Измерение антенн",
+                "title": "Можно ли действительно заменить фирменную антенну китайской копией?",
+                "block1": "Представление авторов, тестов и мотивации",
+                "block1Q1": "Руда OK2ZA",
+                "block1Q1Q1": "Руду знают почти все лицензированные, так как он, вероятно, лучший в нашей республике туристический проводник по авиаперелётам. Если вам нужно пересесть в аэропорту тоталитарного государства на пути к конечному пункту назначения, он вам поможет. Однако мы говорим не только о людях, но и о 600 кг труб, мачт и антенн, которые необходимо быстро развернуть для досмотра на наркотики, затем снова упаковать и успеть на рейс. А ещё он главный тренер по сёрфингу на острове без туристов, с высотой всего 3 метра над уровнем океана и 7-метровыми волнами. Для остальных достаточно знать, что в некоторых мировых таблицах его команда стабильно занимает второе место.",
+                "block1Q1Q2": "Так что я знал, к кому обратиться с просьбой о измерениях. О бесполезных измерениях, как я тогда думал, и, наверное, не я один.",
+                "block1Q2": "Арношт905",
+                "block1Q2Q1": "Меня знают в основном как человека, которого сложно понять. Я люблю велопоходы на дальние расстояния с группами, которые никто не ожидает увидеть в финальной точке через 650-1000 км пути. Я путешествую по европейским велотрассам в приграничных районах, где нет мобильной связи, нет воды и негде укрыться от дождя или солнца. Среди наших участников есть практически слепой с дальностью зрения 9 метров, пенсионер 81 года, который при встрече заявил: \"Со мной проблем не будет, я уже оплатил похороны\", человек, переживший инсульт и управляющий велосипедом одной рукой, а также парень, которого достали из шахты лифта и спустя два года он снова сел на велосипед.",
+                "block1Q2Q2": "Попробуйте в таких условиях набрать группу на сенсорном телефоне во время езды одной рукой.",
+                "block1Q2Q3": "Первую Motorolu 5450 или Intek MT400 я утопил, поэтому купил Motorolu T-82 Extreme. Никому не рекомендую повторять этот опыт – на дамбах реки Одры связь прерывается после потери видимости через кусты. В городе она исчезает уже на 600 метрах, при проезде холма или за углом. Тогда я активировал Alinco DJ-500, заказал аккумулятор из Китая и отправился в леса. Но в 200 метрах от телебашни наступила полная тишина. Абсолютная...",
+                "block1Q2Q4": "Когда ты с пожилым человеком осматриваешь место для ночёвки, а тут подбегает слепой и кричит, что потерял инсультника, приходится объезжать шесть немецких деревень без связи. Когда надо услышать – значит надо услышать.",
+                "block1Q2Q5": "К счастью, антенны прибыли, у Руды есть измеритель и свободное время.",
+                "block1QimgQallQ1": "Каталог материалов",
+                "block2": "Методика измерения антенн",
+                "block2Q1": "Вы ждёте солнечную погоду в феврале, безветрие, измеряете +13°C в 14:30 24.2.2025, выкладываете всё на капот машины, чертите таблицу в блокноте и проводите интересные 45 минут. На фото, кроме измерителя Руды, сверху вниз:",
+                "block2Q5": "Тактический штырь 33 см",
+                "block2Q6": "Тактический штырь 48 см",
+                "block2Q7": "Тактический штырь 124 см",
+                "block2Q10": "Катушки тактических антенн sma-female и sma-male",
+                "block2Q12": "Измеритель RigExpert AA-1400 с переходником на sma-female",
+                "block3": "Иллюстрации с измерителя",
+                "block3Q1": "Сначала на солнце.",
+                "block3QimgQ1": "Вид на солнце",
+                "block3Q2": "Затем с профессиональным затемнением.",
+                "block3QimgQ2": "Профессиональное затемнение",
+                "block4": "Таблица победителей",
+                "block4Q1": "Среди антенн удивляет оригинальная антенна Alinco, хоть и старая, но не для выбрасывания, а также антенна Retevis, которую я посчитал непригодной, но измерения показали обратное.",
+                "block4Q2": "Для портативных антенн SWR до 4 приемлем, от 5 – уже совсем плохо. 20 – бесконечность, и это не весёлое бесконечное.",
+                "block4Q3": "Катушка у тактических антенн должна быть разной для каждой длины. Однако производитель экономит на качестве, и они фактически одинаковые.",
+                "block4Q4": "Из-за единственного адаптера на измерителе для антенн с sma-female использовали переходник SMA-SMA m/m. Это оказывает некоторое влияние, но в данном случае оно незначительное.",
+                "tabQmainQth": "Антенна / SWR по частотам",
+                "block5": "Выводы",
+                "block5Q1": "В случае с заводскими антеннами вы поймете поговорку: «Она стоит свеч». Только этот подходит для любительского диапазона 145 МГц. При тактической длине 124 см или 48 см прослеживается влияние иной конструкции катушки, в этом случае, в зависимости от разъема, катушка будет заменена излучателем либо на общей частоте 172 МГц, либо универсальной на 70 см. Мы были удивлены, отметив, что все эти комбинации тактических антенн очень хорошо передают на всех используемых частотах от 660 до 780 МГц... В конце концов, чего мы можем ожидать от антенн, изначально разработанных для крестьян российской армии с Beofang UV-5R после вторжения в Украину в 2022 году, когда требуется только лучший прием, и никто больше не ожидает ответных передач. Однако мы не отрицаем их дешевую взаимозаменяемость.",
+                "block5Q2": "Не просто беглый взгляд на таблицу, мы с удивлением видим, что обе модели Diamond оказались победителями, отстав только на 145 МГц, а Retevis RHD771 оказался на третьем месте, по сути, став лучшим игроком года. А потом просто поигрались с тактическими антеннами.",
+                "footer": "© 2/2025 Измерения антенны опубликованы здесь благодаря администратору :-D Вы также можете предоставить свою антенну для измерения. Со временем будут добавлены измерения антенн CB на частоте 27 МГц. Если не указано иное, переводы с чешского на другие языки выполняются с помощью компьютера."
+            }
+            ,
+            "pl": {
+                "headtitle": "Pomiar Anten",
+                "title": "Czy naprawdę można zastąpić markową antenę chińską podróbką?",
+                "block1": "Przedstawienie autorów, testów i motywacji",
+                "block1Q1": "Ruda OK2ZA",
+                "block1Q1Q1": "Rudę zna prawie każdy licencjonowany krótkofalowiec. Jest chyba najlepszym przewodnikiem turystycznym po liniach lotniczych w naszym kraju, zwłaszcza jeśli trzeba się przesiąść na lotnisku w jakimś totalitarnym państwie i dotrzeć na drugi koniec świata. A tu mówimy nie tylko o odprawie, ale o 600 kg masztów i anten, które trzeba szybko rozpakować do kontroli antynarkotykowej i przeszukania w poszukiwaniu sprzętu szpiegowskiego, a potem ponownie spakować, aby zdążyć na samolot. Ewentualnie można go spotkać jako trenera surfingu na wyspie bez turystów, o wysokości 3 m nad poziomem morza i 7-metrowymi falami. Innym musi wystarczyć fakt, że w niektórych światowych rankingach on i jego ekipa zajmują drugie miejsce.",
+                "block1Q1Q2": "Więc wiedziałem, do kogo się zwrócić z prośbą o pomiar. O pomiar, który uważałem za zbędny – i pewnie nie tylko ja.",
+                "block1Q2": "Arnošt905",
+                "block1Q2Q1": "Jestem znany głównie jako niezrozumiały człowiek, który lubi długodystansową turystykę rowerową w grupach, gdzie nikt nie spodziewa się przejechać 650-1000 km planowanej trasy. Podróżuję po europejskich trasach granicznych, gdzie nie ma zasięgu komórkowego, nie ma gdzie nabrać wody, ani schronić się w cieniu czy pod dachem. W mojej ekipie rowerowej są takie postacie jak prawie niewidomy człowiek z zasięgiem wzroku 9 m, który widzi znak 2x2 m, ale nie rozróżnia jego koloru, albo 81-letni emeryt, który na pierwszym spotkaniu powiedział: „Nie będę sprawiał problemów, już zapłaciłem za swój pogrzeb.” I rzeczywiście, problemów z nim nie ma :-D. Albo gość po udarze, któremu jedna ręka wisi na gumce od spodenek przypiętej do kierownicy, a pedałuje tylko jedną nogą. Albo ktoś, kogo wyciągnęli z szybu windy, a dwa lata później znów wsiadł na rower. Takie są składy naszych ekspedycji, a krótkofalówka odgrywa w nich dużą rolę – poza tym to też zabawki, a my nadal jesteśmy dużymi chłopcami.",
+                "block1Q2Q2": "Spróbujcie w takiej ekipie jedną ręką w czasie jazdy wykręcić numer do grupowego połączenia na smartfonie z ekranem dotykowym...",
+                "block1Q2Q3": "Pierwszą Motorolę 5450 i Intek MT400 utopiłem, więc kupiłem Motorolę T-82 Extreme. Nie polecam. Na wałach przeciwpowodziowych Odry sygnał zanikł przy pierwszym zagajniku. W mieście zasięg ginie po 600 metrach, jeśli tylko miniesz zakręt lub wzgórze. Więc aktywowałem Alinco DJ-500, zamówiłem akumulator z Chin i ruszyłem do lasu. 200 m od nadajnika telewizyjnego – kompletna cisza. Ale naprawdę cisza... Więc kupiłem TYT TH-UV99 i zacząłem testować różne anteny.",
+                "block1Q2Q4": "Co tu więcej tłumaczyć? Jesteś z seniorem na rekonesansie noclegowym, nagle wpada niewidomy, że zgubił gościa po udarze, i ruszasz na objazd sześciu niemieckich wiosek bez sygnału GSM i radiowego... Jeśli masz słyszeć, to musisz słyszeć.",
+                "block1Q2Q5": "Na szczęście anteny dotarły, Ruda miał miernik i czas.",
+                "block1QimgQallQ1": "Katalog materiału",
+                "block2": "Metodyka pomiarów anten",
+                "block2Q1": "Czekasz na słoneczną pogodę w lutym, bezwietrzną, notujesz 13°C o 14:30 24.2.2025, kładziesz wszystko na masce samochodu, wyciągasz notes, rysujesz tabelkę i zaczynasz ciekawą 45-minutową sesję. Na zdjęciu, oprócz miernika Rudy, od góry widać:",
+                "block2Q5": "Takticzna antena 33 cm",
+                "block2Q6": "Takticzna antena 48 cm",
+                "block2Q7": "Takticzna antena 124 cm",
+                "block2Q10": "Cewki anten taktycznych SMA-F i SMA-M",
+                "block2Q12": "Miernik RigExpert AA-1400 z redukcją na SMA-F",
+                "block3": "Podgląd pomiarów",
+                "block3Q1": "Najpierw w słońcu.",
+                "block3QimgQ1": "Widok w słońcu",
+                "block3Q2": "Potem z profesjonalnym zacienieniem.",
+                "block3QimgQ2": "Profesjonalne zacienienie",
+                "block4": "Tabela wyników",
+                "block4Q1": "Wśród anten zaskakuje oryginalny „pendrek” Alinco – choć leciwy, ale wciąż funkcjonalny – oraz antena Retevis, którą początkowo uznałem za bezużyteczną. Pomiar pokazał, że problemem byłem ja, nie antena :-D.",
+                "block4Q2": "Wartości powyżej 2 dla anten stacjonarnych są problematyczne, ale w przypadku ręcznych, gdzie przeciwwaga się zmienia, dopuszczalne są nawet do 4. Od 5 w górę jest już naprawdę źle… Wartość 20 oznacza nieskończoność – i to nie jest wesoła nieskończoność Dana Nekonečnego.",
+                "block4Q3": "Antena taktyczna powinna mieć różne cewki dla różnych długości. Tutaj mamy jedną „uniwersalną”, która w praktyce różni się w zależności od konektora… Parametry SWR będą się pogarszać z użytkowaniem.",
+                "block4Q4": "Z powodu braku redukcji musieliśmy użyć przejściówki SMA-SMA M/M, co mogło mieć minimalny wpływ na wyniki.",
+                "tabQmainQth": "Antena / SWR według częstotliwości",
+                "block5": "Podsumowanie",
+                "block5Q1": "W przypadku anten fabrycznych zrozumiałe jest powiedzenie, że coś jest „warto się tym zająć”. Tylko ten nadaje się do amatorskiego 145MHz. Przy długości taktycznej 124 cm lub 48 cm widoczny jest wpływ innej konstrukcji cewki – w tym przypadku, w zależności od złącza, cewka zostanie zastąpiona radiatorem współdzielonym 172 MHz lub uniwersalnym 70 cm. Z rozbawieniem zauważyliśmy, że wszystkie te kombinacje anten taktycznych nadają bardzo dobrze na wszystkich wykorzystywanych częstotliwościach od 660 do 780 MHz... Czego w końcu możemy oczekiwać od anten pierwotnie zaprojektowanych dla chłopów armii rosyjskiej z Beofang UV-5R po inwazji na Ukrainę w 2022 roku, gdy wymagany jest tylko lepszy odbiór, a transmisji powrotnych nikt już nie oczekuje. Nie negujemy jednak ich taniej substytucyjności.Wśród fabrycznych anten tylko Diamondy spisały się dobrze. Anteny taktyczne nadają na 660-780 MHz – w sam raz dla rosyjskich żołnierzy z Baofangami UV-5R, gdzie nie liczy się nadawanie, tylko odbiór.",
+                "block5Q2": "Nie wystarczy pobieżne spojrzenie na tabelę, by zauważyć, że zwycięzcami są oba modele Diamond, które tracą tylko przy częstotliwości 145 MHz, a na trzecim miejscu plasuje się Retevis RHD771, który jest właściwie skoczkiem roku. A potem po prostu pobawić się antenami taktycznymi.",
+                "footer": "© 2/2025 Pomiary anten publikowane tutaj dzięki adminowi :-D Możesz również dostarczyć swoją antenę do pomiaru. Z czasem zostaną dodane pomiary anten CB na częstotliwości 27MHz. O ile nie zaznaczono inaczej, tłumaczenia z języka czeskiego na inne języki są generowane maszynowo."
+            }
+            ,
+            "hu": {
+                "headtitle": "Antennamérés",
+                "title": "Valóban helyettesíthető a márkás antenna egy kínai utánzattal?",
+                "block1": "A szerzők, tesztek és motivációk bemutatása",
+                "block1Q1": "Ruda OK2ZA",
+                "block1Q1Q1": "Rudát szinte minden engedéllyel rendelkező rádiós ismeri. Valószínűleg a legjobb légi közlekedési túravezető az országban, ha épp egy totalitárius állam átszálló repülőterén kell eljutnod a világ végére. Nemcsak az utasok, hanem 600 kg-os antennatornyok és rudak gyors kipakolásában és átvizsgálásában is tapasztalt, mielőtt továbbindulnának. Egyébként egy szörfoktató egy lakatlan szigeten, amely mindössze 3 méterre emelkedik az óceánból, ahol 7 méteres hullámok tombolnak. Aki ismeri, tudja, hogy a világ rádiós ranglistáin rendszeresen a második helyen áll csapatával.",
+                "block1Q1Q2": "Szóval tudtam, hogy kit kell megkérnem a mérésekhez. Felesleges mérésekhez, mint ahogy azt először gondoltam – és talán nem én voltam az egyetlen.",
+                "block1Q2": "Arnošt905",
+                "block1Q2Q1": "Engem főleg egy nehezen érthető figuraként ismernek, aki imádja a hosszútávú kerékpáros túrákat olyan csapatokkal, amelyekről senki sem gondolja, hogy teljesítik az előre tervezett 650–1000 km-es távot. Európai határvidékeken utazom, ahol nincs sem mobiljel, sem vízforrás, és menedék is alig akad. Egyik csapattagunk például egy szinte vak kerékpáros, aki csak 9 méterre lát, nem tudja megkülönböztetni a táblák színét, de 81 éves idős ember is velünk tartott, aki így mutatkozott be: 'Velem nem lesz gond, előre kifizettem a temetésemet.' És tényleg nem volt vele gond. 😆",
+                "block1Q2Q2": "Most képzeld el, hogy ilyen társaságban kellene egy érintőképernyős telefonon vészhelyzeti csoporthívást indítani menet közben, egy kézzel.",
+                "block1Q2Q3": "Első Motorolám, a 5450, majd az Intek MT400 elázott, így vettem egy Motorola T-82 Extreme-et. Nem ajánlom senkinek. Az Odera folyó árvízvédelmi gátján, amint eltűntem a bokrok mögött, megszűnt a kapcsolat. Városi környezetben sem jobb, mert már 600 méteren, egy kis domb vagy egy sarok is blokkolja a jelet. Ezért váltottam az Alinco DJ-500-ra, rendeltem egy kínai akkut és irány az erdő. Ott viszont a televíziós adótorony közelében teljes csend fogadott…",
+                "block1Q2Q4": "És akkor képzeld el, hogy egy idős emberrel felderíted az éjszakai táborhelyet, amikor hirtelen berohan a vak csapattag, hogy elvesztette a félig bénult társunkat, és te hatszor körbemész hat német falut, ahol sem mobil, sem rádiójel nincs.",
+                "block1Q2Q5": "Szerencsére az antennák megérkeztek, Ruda rendelkezett egy mérőműszerrel, és még ideje is volt rá.",
+                "block1QimgQallQ1": "Felszereléskatalógus",
+                "block2": "Antenna mérési módszertan",
+                "block2Q1": "Februárban egy napsütéses, szélcsendes napra vártunk, és 2025. február 24-én, 14:30-kor 13°C-os hőmérsékleten elkezdtük a méréseket. Az autó motorháztetőjén készítettünk egy táblázatot, és 45 érdekes perc vette kezdetét. A képen, Ruda műszerén kívül, fentről lefelé:",
+                "block2Q5": "33 cm-es taktikai antenna",
+                "block2Q6": "48 cm-es taktikai antenna",
+                "block2Q7": "124 cm-es taktikai antenna",
+                "block2Q10": "Taktikai antennák SMA-female és SMA-male csatlakozóval",
+                "block2Q12": "RigExpert AA-1400 mérőműszer SMA-female adapterrel",
+                "block3": "Mérőműszer képei",
+                "block3Q1": "Először napsütésben.",
+                "block3QimgQ1": "Napsütéses nézet",
+                "block3Q2": "Majd professzionális árnyékolás alatt.",
+                "block3QimgQ2": "Professzionális árnyékolás",
+                "block4": "A győztesek táblázata",
+                "block4Q1": "Az eredmények meglepőek voltak: az Alinco eredeti 'pendrek' antennája kiemelkedett, pedig már régi és kidobásra ítéltük. A Retevis antenna, amelyet korábban haszontalannak tartottam, pedig jó eredményeket produkált.",
+                "block4Q2": "Általában, ha az SWR érték egy fix antennánál 2 felett van, az problémás. Kézi rádióknál a 4-es még elfogadható, az 5-ös viszont már katasztrófa. Az SWR 20 pedig a végtelennel egyenlő – és nem a vidám Dan Nekonečný-féle végtelennel. 😆",
+                "block4Q3": "A 'taktikai' antennák cserélhető tekercsei miatt a rezonancia más-más frekvenciákon alakult ki. A konstrukció is befolyásolja az SWR-t, és a hosszabb 124 cm-es antennát egy kézi rádión tényleg nem akarod használni, mert eltörheti a csatlakozót.",
+                "block4Q4": "A méréseket egyetlen SMA-female adapterrel végeztük, így az SMA-female antennákhoz SMA-SMA átalakítót kellett használnunk. Ennek lehet némi hatása, de elhanyagolható.",
+                "tabQmainQth": "Antenna / SWR különböző frekvenciákon",
+                "block5": "Összegzés",
+                "block5Q1": "A gyári antennáknál meg fogod érteni azt a mondást, hogy valami \"megéri a fáradságot\". Amatőr 145MHz-hez csak ez alkalmas. 124 cm-es vagy 48 cm-es taktikai hossznál más tekercs kialakítás hatása látható, ebben az esetben a csatlakozótól függően a tekercset radiátorra cserélik osztott 172MHz-en vagy univerzálisan 70cm-en. Jót mulattunk, hogy ezek a taktikai antennakombinációk nagyon jól sugároznak minden használt frekvencián 660-tól 780 MHz-ig... Hiszen mit is várhatunk az eredetileg az orosz hadsereg parasztjainak tervezett Beofang UV-5R-es antennáktól Ukrajna 2022-es inváziója után, amikor már nem kell jobb vételre. Nem tagadjuk azonban olcsó helyettesíthetőségüket.A gyári antennák gyakran kiábrándítóak. A taktikai antennák közül az SMA-male és SMA-female modellek eltérően teljesítettek. Viszont egy közös bennük: kiválóan sugároznak 660–780 MHz között – pont ott, ahol nem kellene. 😆",
+                "block5Q2": "Nem csak egy felületes pillantást vetünk az asztalra, meglepő módon mindkét Diamondot győztesnek látjuk, csak 145 MHz-en akadoznak, a Retevis RHD771 pedig a 3. helyen áll, lényegében az év ugrója. Aztán csak játssz a taktikai antennákkal.",
+                "footer": "© 2/2025 Az admin jóvoltából itt közzétett antenna mérések :-D A méréshez az antennáját is biztosíthatja. Idővel a CB antennák 27 MHz-es mérései is hozzáadódnak. Eltérő rendelkezés hiányában a cseh nyelvről más nyelvekre történő fordítások géppel készülnek."
+            }
+            ,
+            "it": {
+                "headtitle": "Misurazione delle Antenne",
+                "title": "È davvero possibile sostituire un'antenna di marca con un'imitazione cinese?",
+                "block1": "Presentazione degli autori, dei test e delle motivazioni",
+                "block1Q1": "Ruda OK2ZA",
+                "block1Q1Q1": "Quasi tutti i radioamatori con licenza conoscono Ruda, probabilmente la migliore guida turistica per il trasporto aereo nel nostro paese, se hai bisogno di fare scalo negli aeroporti di stati totalitari fino a destinazioni remote. Ma non solo: qui parliamo di 600 kg di tubi, tralicci e antenne che devono essere rapidamente disimballati per il controllo antidroga, ispezionati per eventuali attrezzature spionistiche nascoste e poi rapidamente reimballati per non perdere il volo. Oppure come capo allenatore di surf su un'isola senza altri turisti, con un'altitudine di 3 m sopra il livello del mare e onde di 7 m. Per gli altri dovrebbe bastare sapere che in alcune classifiche mondiali è quasi sempre al 2° posto con il suo team.",
+                "block1Q1Q2": "Quindi sapevo bene a chi chiedere di fare le misurazioni. Anche se, inizialmente, lo consideravo un test inutile, e probabilmente non ero l'unico.",
+                "block1Q2": "Arnošt905",
+                "block1Q2Q1": "Sono noto per essere poco comprensibile, visto che amo il cicloturismo a lunga distanza con gruppi in cui nessuno si aspetta di completare viaggi di 650-1000 km. Giro per le EuroVelo lungo i confini di stati dove non c’è segnale mobile, né fonti d’acqua, né un rifugio dal sole o dalla pioggia. E nei nostri team ciclistici puoi trovare un ipovedente con un visus di 9 m che distingue solo cartelli di 2x2 m ma non i loro colori, un pensionato di 81 anni (ormai anche più), il quale, al nostro primo incontro, disse: \"Non darò problemi, ho già pagato il mio funerale.\" E davvero, nessun problema con lui! 😆 Oppure un sopravvissuto a un ictus che pedala con una sola gamba e tiene l’altra appesa alla cintura, o uno che è stato tirato fuori da un vano ascensore e due anni dopo era di nuovo in sella. 😂 Sì, questo è il tipico mix dei nostri team di spedizione, e quindi la radio gioca un ruolo importante. Oltre a ciò, sono anche giocattoli: siamo solo bambini cresciuti!",
+                "block1Q2Q2": "Provate voi, in questo gruppo, a fare una chiamata di gruppo su uno smartphone touch con una mano mentre pedalate.",
+                "block1Q2Q3": "Ho annegato la mia prima Motorola 5450 e l'Intek MT400, quindi ho comprato una Motorola T-82 Extreme. Non lo consiglio a nessuno! Sui terrapieni anti-inondazione del fiume Odra, bastava perdere la linea visiva a causa dei cespugli per interrompere la connessione. Anche in città il segnale cadeva dopo circa 600 m oltre l’orizzonte o dietro un angolo. Così ho attivato il mio Alinco DJ-500, comprato una batteria dalla Cina e sono andato nei boschi. A 200 m da un trasmettitore televisivo... silenzio totale. Così ho provato il TYT TH-UV99 e ho iniziato a comprare antenne per migliorare la ricezione.",
+                "block1Q2Q4": "Cosa devo spiegare? Quando sei in ricognizione per un posto dove dormire con un anziano, improvvisamente arriva il cieco dicendo che ha perso il compagno reduce da un ictus, e ti trovi a girare per sei villaggi tedeschi senza segnale mobile né radio... Quando devi sentire, devi sentire.",
+                "block1Q2Q5": "Fortunatamente le antenne sono arrivate, Ruda aveva il misuratore e anche il tempo.",
+                "block1QimgQallQ1": "Catalogo materiali",
+                "block2": "Metodologia di misurazione delle antenne",
+                "block2Q1": "Aspetti una giornata di sole senza vento, misuri 13°C alle 14:30 del 24/2/2025, metti tutto sul cofano di un’auto, prendi un taccuino, disegni una tabella e iniziano 45 minuti interessanti. Nella foto, oltre al misuratore di Ruda, dall’alto vedi:",
+                "block2Q5": "Antenna tattica 33 cm",
+                "block2Q6": "Antenna tattica 48 cm",
+                "block2Q7": "Antenna tattica 124 cm",
+                "block2Q10": "Bobine per antenne tattiche sma-female e sma-male",
+                "block2Q12": "Misuratore RigExpert AA-1400 con adattatore sma-female",
+                "block3": "Anteprime illustrative del misuratore",
+                "block3Q1": "Prima alla luce del sole.",
+                "block3QimgQ1": "Vista al sole",
+                "block3Q2": "Poi con schermatura professionale.",
+                "block3QimgQ2": "Schermatura professionale",
+                "block4": "Tabella dei vincitori",
+                "block4Q1": "Sorprende l’antenna originale Alinco, ormai un cimelio, e la Retevis, che avevo scartato. Ma i test mi hanno smentito: il problema ero io! 😆 Non abbiamo testato a 446 MHz, perché tanto non dovremmo usare queste antenne sulle frequenze PMR.",
+                "block4Q2": "Molti sanno che un SWR superiore a 2 è problematico per antenne fisse, ma per le portatili, dove la massa cambia con l’altezza da terra o la vicinanza a un’auto, si possono 'usare' valori fino a 4. Sopra 5 è davvero pessimo. Un valore di 20 indica infinito, ma non l'infinito allegro di Dan Nekonečný. 😆",
+                "block4Q3": "Le antenne 'tattiche' dovrebbero avere bobine diverse per ogni lunghezza, ma qui sono uguali per ridurre i costi. Inoltre, la costruzione è fragile: due strisce metalliche unite all’esterno per mantenere la forma. L’uso peggiorerà gradualmente il parametro SWR. La versione da 124 cm su una portatile è rischiosa: può spezzare il connettore! Io la uso fissata alla mia bici come bandiera di sicurezza. Va bene per l’ascolto.",
+                "block4Q4": "A causa di un unico adattatore nel misuratore, abbiamo dovuto usare un connettore SMA-SMA per le antenne sma-female. Ha sicuramente un impatto, ma trascurabile in questo caso.",
+                "tabQmainQth": "Antenna / SWR per frequenza",
+                "block5": "Conclusione",
+                "block5Q1": "Le antenne di fabbrica confermano il detto: 'vale meno di niente'. Solo la TYT è decente sui 145 MHz. Le antenne tattiche da 124 cm e 48 cm mostrano differenze dovute alle bobine, con una tarata per i 172 MHz e l'altra per i 70 cm. Abbiamo anche scoperto che trasmettono molto bene tra 660 e 780 MHz... non sorprende, considerando che sono state sviluppate per i soldati russi con Baofeng UV-5R dopo l'invasione dell'Ucraina nel 2022. L’importante era solo ricevere meglio, il resto non interessava. Ma almeno sono economiche da sostituire.",
+                "block5Q2": "Dalla tabella emergono come vincitori entrambi i Diamond, con qualche esitazione solo sui 145 MHz. Al 3° posto il Retevis RHD771, la sorpresa dell’anno. Dopo di loro, solo esperimenti con le antenne tattiche.",
+                "footer": "© 2/2025 Le misurazioni dell'antenna sono state pubblicate qui grazie all'amministratore :-D Puoi anche fornire la tua antenna per la misurazione. Nel tempo verranno aggiunte le misurazioni delle antenne CB sui 27 MHz. Salvo diversa indicazione, le traduzioni dal ceco alle altre lingue sono generate automaticamente."
+            }
+            ,
+            "es": {
+                "headtitle": "Medición de Antenas",
+                "title": "¿Realmente se puede reemplazar una antena de marca con una imitación china?",
+                "block1": "Presentación de los autores, pruebas y motivaciones",
+                "block1Q1": "Ruda OK2ZA",
+                "block1Q1Q1": "Ruda probablemente es conocido por casi todos los radioaficionados con licencia, ya que es posiblemente el mejor guía turístico de aviación en nuestra república. Si necesitas hacer una conexión en aeropuertos de cualquier estado totalitario hasta tu destino final al otro lado del mundo, él es la persona indicada. No solo eso, sino que aquí estamos hablando de 600 kg de tubos, mástiles y antenas que hay que desempaquetar rápidamente para inspección antidrogas, revisión de equipo de espionaje escondido y volver a empacar antes de la salida del vuelo. También es entrenador jefe de surf en una isla sin turistas, con una elevación de solo 3 metros sobre el nivel del mar y olas de 7 metros. Y para los demás, basta decir que en algunos rankings mundiales, su equipo está casi siempre en el segundo lugar.",
+                "block1Q1Q2": "Así que sabía a quién pedirle la medición. Una medición innecesaria, como pensaba y probablemente no era el único.",
+                "block1Q2": "Arnošt905",
+                "block1Q2Q1": "Soy conocido principalmente como alguien difícil de entender, ya que disfruto del cicloturismo de larga distancia con grupos en los que nadie espera que terminemos los 650-1000 km del viaje planificado. Viajamos por rutas europeas en las fronteras de los países, donde no hay señal móvil, ni agua potable disponible, ni lugares para refugiarse del sol o la lluvia. Y en nuestro equipo tenemos a un casi ciego con una visión de 9 metros, que puede ver un letrero de 2x2 metros pero no distinguir su color, o un jubilado de 81 años (ahora mayor), cuyo primer comentario cuando nos conocimos fue: \"No tendré problemas, ya he pagado mi funeral.\" Y efectivamente, nunca tuvimos problemas con él. O un tipo que tuvo un derrame cerebral y pedalea con una sola pierna mientras su brazo cuelga de un elástico del manillar. O un chico que sacaron del hueco de un ascensor y dos años después estaba de nuevo montando bicicleta. Sí, así suelen ser los equipos de nuestras expediciones, y por eso la radio es esencial. Además, también es un juguete, y al fin y al cabo, seguimos siendo niños grandes.",
+                "block1Q2Q2": "Intenten marcar una llamada en un teléfono táctil mientras pedalean con una sola mano. Verán lo divertido que es.",
+                "block1Q2Q3": "Ahogué mi primera Motorola 5450 e Intek MT400, así que compré una Motorola T-82 Extreme. No se la recomiendo a nadie, porque en los diques contra inundaciones del río Odra, la conexión se perdió cuando la visibilidad se redujo por los arbustos. De hecho, en la ciudad, la señal desaparece a unos 600 metros si hay una colina o simplemente una esquina de un edificio en el camino. Entonces activé mi Alinco DJ-500, pedí una batería de China y me fui al bosque. Bueno, a 200 metros de una torre de TV, de repente, silencio total. Pero realmente total... Así que encontré el TYT TH-UV99 y comencé a comprar todo tipo de antenas para mejorar la recepción.",
+                "block1Q2Q4": "¿Qué más puedo explicar? Cuando estás en un recorrido con un anciano para buscar un sitio donde dormir, de repente aparece un ciego diciendo que perdió al tipo que tuvo un derrame cerebral, y te toca recorrer seis pueblos alemanes sin señal de móvil ni de radio. Cuando tienes que escuchar, simplemente tienes que hacerlo.",
+                "block1Q2Q5": "Afortunadamente, llegaron las antenas, Ruda tenía un medidor y tiempo para hacer las pruebas.",
+                "block1QimgQallQ1": "Catálogo de materiales",
+                "block2": "Metodología de medición de antenas",
+                "block2Q1": "En febrero, esperas un día soleado, sin viento, mides 13°C a las 14:30 del 24/02/2025, colocas todo en el capó delantero del coche, sacas el bloc de notas, dibujas una tabla y empiezas 45 minutos de pruebas interesantes. En la foto, además del medidor de Ruda, se ve desde arriba:",
+                "block2Q5": "Vara táctica de 33 cm",
+                "block2Q6": "Vara táctica de 48 cm",
+                "block2Q7": "Vara táctica de 124 cm",
+                "block2Q10": "Bobinas de antenas tácticas SMA-female y SMA-male",
+                "block2Q12": "Medidor RigExpert AA-1400 con adaptador SMA-female",
+                "block3": "Vistas ilustrativas del medidor",
+                "block3Q1": "Primero al sol.",
+                "block3QimgQ1": "Vista al sol",
+                "block3Q2": "Luego con sombreado profesional.",
+                "block3QimgQ2": "Sombreado profesional",
+                "block4": "Tabla de ganadores",
+                "block4Q1": "En cuanto a las antenas, sorprende la original de Alinco, aunque es antigua y debería ser desechada, y la antena Retevis, que descarté inicialmente, pero las mediciones mostraron que el problema era error de usuario. En 446 MHz no medimos porque ninguna de estas antenas está destinada para transmisión PMR.",
+                "block4Q2": "La mayoría sabe que un valor SWR superior a 2 en antenas estacionarias es malo. En radios portátiles, donde la tierra de referencia cambia con la altura sobre el suelo o la proximidad a un coche, se pueden tolerar valores hasta 4. Desde 5 es realmente malo... Un valor de 20 significa infinito, y no es el \"infinito divertido\" de Dan Nekonečný.",
+                "block4Q3": "Sobre las antenas 'tácticas', la bobina debería ser diferente para cada longitud, pero por costos de fabricación, es la misma. SWR empeorará con el uso, y una antena de 124 cm en una radio portátil es peligrosa porque puede romper el conector. Yo la llevo en mi bicicleta con la varilla de una bandera de seguridad.",
+                "block4Q4": "Solo teníamos un adaptador en el medidor, así que para las antenas SMA-female usamos un acoplador SMA-SMA m/m. Esto tiene algún efecto en las mediciones, pero es insignificante.",
+                "tabQmainQth": "Antena / SWR según frecuencia",
+                "block5": "Resumen",
+                "block5Q1": "Con las antenas de fábrica, entiendes por qué algo 'no vale nada'. Solo la TYT es útil en 145 MHz. En 124 cm y 48 cm se nota que la bobina varía según el conector, lo que afecta las frecuencias de resonancia. Nos reímos al ver que todas las antenas tácticas funcionan bien entre 660 y 780 MHz... Lo que era de esperarse, dado que fueron diseñadas para radios Baofeng UV-5R en el ejército ruso tras la invasión de Ucrania en 2022. No se diseñaron para transmitir, solo para mejorar la recepción.",
+                "block5Q2": "Mirando la tabla, los Diamond fueron los ganadores, aunque fallaron en 145 MHz. En tercer lugar, la Retevis RHD771. Luego, solo queda jugar con las antenas tácticas.",
+                "footer": "© 2/2025 Medidas de antena publicadas aquí gracias al administrador :-D También puedes proporcionar tu antena para realizar mediciones. Con el tiempo se irán añadiendo mediciones de antenas CB en 27MHz. A menos que se indique lo contrario, las traducciones del checo a otros idiomas se generan automáticamente."
+            }
+            ,
+            "sk": {
+                "headtitle": "Meranie Antén",
+                "title": "Naozaj možno nahradiť značkovú anténu čínskou napodobeninou?",
+                "block1": "Predstavenie autorov, testov a motivácií",
+                "block1Q1": "Ruda OK2ZA",
+                "block1Q1Q1": "Rudu asi poznajú skoro všetci licencovaní, je totiž v našej republike asi najlepší turistický sprievodca leteckou dopravou, ak potrebujete odbaviť na prestupných letiskách kdejakého totalitného štátu až do cieľového na konci sveta. Čo o to odbaviť, ale tu sa bavíme o 600 kg trubkách stožiarov a antén, ktoré musíte rýchlo vyložiť na kontrolu drog a špionážneho vybavenia, a zase rýchlo zabaliť, aby ste stihli odlet. Alebo ako hlavný tréner surfovania na ostrove bez ďalších turistov s výškou ostrova 3 m nad hladinou oceánu so 7 m vlnami. A ostatným musí stačiť, že v niektorých svetových tabuľkách je so svojou tlupou takmer bežne na 2. mieste.",
+                "block1Q1Q2": "Takže som vedel, koho oslovím s prosbou o meranie. O zbytočné meranie, ako som si myslel, a asi nie som jediný.",
+                "block1Q2": "Arnošt905",
+                "block1Q2Q1": "Mňa poznajú hlavne ako nie úplne pochopiteľného, keďže mám rád diaľkovú cykloturistiku v skupinách, v ktorých nikto nečaká dokončenie 650 - 1000 km plánovanej trasy. Cestujem po eurocestách na hraniciach štátov, kde nie je ani mobilný signál, ani voda, a nieto ešte tieň či úkryt pred dažďom. A členom takej cykloskupiny je prakticky slepec s dohľadom 9 m, ktorý rozpozná tabuľu 2x2 m, ale nerozozná jej farbu, alebo dôchodca 81 rokov, ktorý pri stretnutí povedal: „So mnou nebudú problémy, už som si predplatil pohreb.“ A naozaj s ním neboli problémy :-D Alebo borec po mozgovej príhode, ktorému visí jedna ruka na gumičke od treniek priviazaná k riadidlám a pedáluje len jednou nohou, alebo šikula, ktorého vytiahli zo šachty výťahu a o dva roky v podobnom stave zase sedí na bicykli :-D Áno, takýto je bežný tím našich expedícií, a tak vysielačka zohráva veľkú rolu – a navyše sú to aj hračky, sme predsa len veľkí chlapci.",
+                "block1Q2Q2": "Skúste v takomto zložení jednou rukou za jazdy vytáčať skupinové volanie na dotykovom telefóne, že.",
+                "block1Q2Q3": "Prvú Motorolu 5450 alebo Intek MT400 som utopil, tak som si kúpil Motorolu T-82 Extreme. Nikomu to neodporúčam zopakovať, pretože na protipovodňových hrádzach rieky Odry pri strate vizuálneho kontaktu cez krovie spojenie skolabovalo. Ostatne, ani v mestách to nefunguje na viac ako 600 m po prekonaní horizontu alebo za rohom. Tak som si aktivoval Alinco DJ-500, objednal akumulátor z Číny a vyrazil do lesov. No, 200 m od televízneho vysielača nastalo úplné ticho... Tak som si vyhliadol TYT TH-UV99 a kupoval a kupoval kadejaké antény na zlepšenie príjmu.",
+                "block1Q2Q4": "Ako to mám vysvetliť, keď ste so starcom na obhliadke miesta na nocľah, zrazu sa priženie slepec, že stratil kamaráta po mozgovej príhode, a vy vyrážate obísť šesť nemeckých dedín bez mobilného aj rádiového signálu... Keď ako nahluchlý musíte počuť, tak jednoducho musíte počuť.",
+                "block1Q2Q5": "Našťastie antény dorazili, Ruda má merač a k tomu aj čas.",
+                "block1QimgQallQ1": "Katalóg materiálu",
+                "block2": "Metodika merania antén",
+                "block2Q1": "Takto si vo februári počkáte na slnečné počasie, bezvetrie, nameriate 13°C o 14:30 24.2.2025, položíte všetko na kapotu auta, vytiahnete poznámkový blok, načrtnete tabuľku a začnete zaujímavých 45 minút. Na fotke okrem Rudovho merača vidíte zhora:",
+                "block2Q5": "Taktická prútová anténa 33 cm",
+                "block2Q6": "Taktická prútová anténa 48 cm",
+                "block2Q7": "Taktická prútová anténa 124 cm",
+                "block2Q10": "Cievky taktických antén SMA-female a SMA-male",
+                "block2Q12": "Merač RigExpert AA-1400 s redukciou na SMA-female",
+                "block3": "Ilustračné náhľady na merač",
+                "block3Q1": "Najprv na slnku.",
+                "block3QimgQ1": "Pohľad na slnku",
+                "block3Q2": "Potom s profesionálnym tienením.",
+                "block3QimgQ2": "Profesionálne tienenie",
+                "block4": "Tabuľka víťazov",
+                "block4Q1": "Čo sa týka samotných antén, prekvapí originálny pendrek Alinca, síce už starý, ale na vyhodenie, a Retevis anténa, ktorú som odsúdil, no meranie mi ukázalo, že problém bol medzi klávesnicou a stoličkou. Na frekvencii 446 MHz sme nemerali, lebo načo, keď tieto antény na PMR nemáme používať.",
+                "block4Q2": "Hodnota nad 2 pri stacionárnych anténach je zlá, ale pri ručných rádiách môže byť použiteľná do hodnoty približne 4. Od 5 je to už naozaj zlé... Hodnota 20 znamená nekonečno, ale nie to veselé nekonečno Dana Nekonečného.",
+                "block4Q3": "Taktické antény majú cievky rovnaké, ale rozdielne podľa konektora. A mechanické prevedenie tiež nie je ideálne. Dĺžku 124 cm na ručke naozaj nechcete, lebo hrozí zlomenie konektora.",
+                "block4Q4": "Vzhľadom len na jednu redukciu na meračke, sme u antén s konektorom sma-female museli použiť prechodku SMA-SMA m/m. Celkom určite to nejaký vplyv má, ale v tomto prípade celkom určite ignorovateľný.",
+                "block5": "Zhrnutie",
+                "block5Q1": "V prípade továrenských antén pochopíte príslovie, že niečo „stojí to za pendrek“. Len tietova je vhodná na amatérskych 145MHz. Na taktickej dĺžke 124cm alebo 48cm je vidieť vplyv iného prevedenia cievky, v tomto prípade podľa konektora, že výmenou cievky bude žiarič buď na zdieľaných 172MHz alebo univerzálne na 70cm. Pobavene sme kvitovali, že všetky tie kombinácie taktických antén veľmi pekne vysielajú na všetkými používaných kmitočtoch od 660 do 780MHz... Ostatne, čo čakať od antén uvedených pôvodne pre mužikov ruskej armády s Beofangmi UV-5R po napadnutí Ukrajiny v roku 2022, kedy sa ani príjem a späť nebude žiadať príjem a späť. U nich ale nepopierame lacnú nahraditeľnosť.Pri továrenských anténach pochopíte rčenie „stojí to za pendrek“. Na 145 MHz je použiteľná len tytová. Pri taktických anténach vidno vplyv odlišnej cievky.",
+                "block5Q2": "Nielen letmým pohľadom na tabuľku vidíme úplne prekvapivo oboch Diamond ako víťaza, kedy zaváhali len na 145MHz, na 3. mieste Retevis RHD771, v podstate skokan roka. Potom už len hračičkovanie s taktickými anténami.Tabuľka prekvapivo ukazuje oba Diamondy ako víťazov, na 3. mieste Retevis RHD771. Potom už len hra s taktickými anténami.",
+                "footer": "© 2/2025 Meranie Antén tu uverejnené vďaka adminovi :-D Aj ty môžeš poskytnúť svoju anténu na zmeranie. Časom pribudnú merania antén CB na 27MHz. Pokiaľ nie je uvedené inak, tak preklady zo slovenčiny do ďalších jazykov sú vytvorené strojovo."
+            }
+            ,
+            "nl": {
+                "headtitle": "Antenne Metingen",
+                "title": "Kan een merkantenne echt worden vervangen door een Chinese imitatie?",
+                "block1": "Introductie van auteurs, tests en motivaties",
+                "block1Q1": "Ruda OK2ZA",
+                "block1Q1Q1": "Bijna alle gelicentieerde radioamateurs kennen Ruda waarschijnlijk. Hij is waarschijnlijk de beste toeristische gids voor de luchtvaart in ons land, vooral als je moet overstappen op luchthavens in totalitaire staten en helemaal naar de andere kant van de wereld moet reizen. Maar het gaat niet alleen om overstappen, hij heeft ook ervaring met het transporteren van 600 kg aan masten en antennes, die snel uitgepakt moeten worden voor een drugscontrole en een spionagecheck, en vervolgens weer ingepakt moeten worden om de vlucht te halen. Daarnaast is hij ook een topcoach in surfen op een onbewoond eiland dat slechts 3 meter boven de zeespiegel ligt, met golven van 7 meter hoog. Voor anderen is het misschien voldoende om te weten dat hij met zijn team regelmatig op de tweede plaats staat in internationale ranglijsten.",
+                "block1Q1Q2": "Dus ik wist precies wie ik moest vragen voor de metingen. Ik dacht dat het zinloos was om te meten, en ik was waarschijnlijk niet de enige.",
+                "block1Q2": "Arnošt905",
+                "block1Q2Q1": "Mensen kennen mij vooral als iemand die niet helemaal te begrijpen is. Ik hou van langeafstandsfietstochten in groepen waarvan niemand verwacht dat ze de geplande 650-1000 km halen. Dit betekent reizen langs Europese fietsroutes, waar er geen mobiel signaal is, geen waterbronnen, en geen beschutting tegen regen of zon. En in zulke groepen zit bijvoorbeeld een bijna blinde man met een zicht van 9 meter – hij kan een bord van 2x2 meter zien, maar niet de kleur ervan. Of een 81-jarige pensionado, die bij de eerste ontmoeting zei: 'Ik zal geen problemen veroorzaken, want ik heb mijn begrafenis al vooruitbetaald.' En inderdaad, hij veroorzaakt geen problemen. Of een kerel die na een beroerte slechts één been kan gebruiken en zijn verlamde arm met een elastiek aan het stuur hangt. Of een waaghals die uit een liftschacht werd gered en twee jaar later alweer op de fiets zat. Dit is de samenstelling van onze expedities, en in zulke omstandigheden is een portofoon erg belangrijk – en daarnaast zijn het gewoon leuke gadgets. We blijven immers grote jongens.",
+                "block1Q2Q2": "Probeer maar eens met één hand een groepsoproep te draaien op een touchscreen-telefoon tijdens het fietsen, dat gaat niet lukken.",
+                "block1Q2Q3": "Mijn eerste Motorola 5450 of Intek MT400 verdronk, dus kocht ik een Motorola T-82 Extreme. Ik raad niemand aan om dit te herhalen, want op een overstromingsdijk langs de rivier de Oder verloor ik het signaal zodra ik uit het zicht verdween achter een struik. Zelfs in steden valt de verbinding na ongeveer 600 meter weg zodra je een heuvel oversteekt of simpelweg een hoek omgaat. Dus schakelde ik over op een Alinco DJ-500, bestelde een batterij uit China en ging de bossen in. Maar op 200 meter van een tv-zendmast hoorde ik plotseling helemaal niets meer. Echt helemaal niets... Daarom kocht ik de TYT TH-UV99 en begon ik allerlei antennes uit te proberen om het bereik te verbeteren.",
+                "block1Q2Q4": "Hoe kan ik dit uitleggen? Je bent met een oude man op zoek naar een slaapplaats, plotseling stormt de blinde man binnen en roept dat hij de man met een beroerte is kwijtgeraakt. En dan moet je zes Duitse dorpjes doorkruisen zonder mobiel of portofoonbereik... Als je half doof bent en toch moet luisteren, dan moet je gewoon kunnen luisteren.",
+                "block1Q2Q5": "Gelukkig kwamen de antennes aan, Ruda had een meetapparaat én tijd.",
+                "block1QimgQallQ1": "Materiaalcatalogus",
+                "block2": "Meetmethodologie van antennes",
+                "block2Q1": "Zo wacht je in februari op zonnig en windstil weer, meet je om 14:30 uur een temperatuur van 13°C op 24-02-2025, leg je alles op de motorkap van een auto, pak je een notitieblok, teken je een tabel en begin je aan een interessante 45 minuten. Op de foto zie je naast Ruda's meetapparaat, van boven naar beneden:",
+                "block2Q5": "Tactische antenne 33 cm",
+                "block2Q6": "Tactische antenne 48 cm",
+                "block2Q7": "Tactische antenne 124 cm",
+                "block2Q10": "Spoelen van tactische antennes (SMA-female en SMA-male)",
+                "block2Q12": "RigExpert AA-1400 meetapparaat met SMA-female adapter",
+                "block3": "Illustratieve voorbeelden van metingen",
+                "block3Q1": "Eerst in de zon.",
+                "block3QimgQ1": "Weergave in de zon",
+                "block3Q2": "Daarna met professionele afscherming.",
+                "block3QimgQ2": "Professionele afscherming",
+                "block4": "Tabel van winnaars",
+                "block4Q1": "Wat antennes betreft, verraste de originele Alinco rubber duck antenne – oud en bijna weggegooid – en de Retevis antenne, die ik al had afgeschreven. De meting bewees dat het probleem eerder bij de gebruiker lag dan bij de antenne zelf. Op 446 MHz hebben we niet gemeten, want waarom zouden we? Geen van deze antennes is bedoeld voor PMR-gebruik.",
+                "block4Q2": "Wat betreft de meetwaarden weet iedereen dat een SWR-waarde boven de 2 bij vaste antennes slecht is. Bij portofoons, waarbij de tegenmassa verandert met de hoogte boven de grond of nabij een auto, kunnen waarden tot 4 nog 'bruikbaar' zijn. Vanaf 5 wordt het echter echt, maar dan ook echt slecht... Een waarde van 20 betekent oneindig slecht – en dan niet op een leuke manier.",
+                "block4Q3": "Bij de 'tactische' antennes zou de spoel voor elke lengte anders moeten zijn. Maar om kosten te besparen zijn ze in feite hetzelfde. Daarnaast zijn er verschillen per connector, zelfs bij identieke connectoren... Mechanisch gezien zijn ze ook niet ideaal: ze bestaan niet uit één, maar twee samengevoegde meetlinten. Hierdoor zal de SWR-waarde verslechteren naarmate de antenne vaker wordt gebruikt.",
+                "block4Q4": "Omdat we slechts één SMA-female adapter hadden, moesten we voor sommige antennes een SMA-SMA (m/m) adapter gebruiken. Dit heeft zeker enige invloed op de metingen, maar in dit geval is dat te verwaarlozen.",
+                "tabQmainQth": "Antenne / SWR per frequentie",
+                "block5": "Samenvatting",
+                "block5Q1": "Als het om fabrieksantennes gaat, kent u het gezegde: iets is de moeite waard. Alleen deze is geschikt voor amateur 145MHz. Bij een tactische lengte van 124 cm of 48 cm is de invloed van een ander spoelontwerp zichtbaar. In dit geval wordt, afhankelijk van de connector, de spoel vervangen door een radiator, hetzij op een gedeelde 172 MHz, hetzij universeel op 70 cm. We vonden het grappig om te zien dat al deze combinaties van tactische antennes heel goed uitzenden op alle gebruikte frequenties van 660 tot 780 MHz... Wat kunnen we immers verwachten van antennes die oorspronkelijk ontworpen zijn voor de boeren van het Russische leger met Beofang UV-5R's na de inval in Oekraïne in 2022, wanneer alleen een betere ontvangst nodig is en niemand zelfs nog retourtransmissies verwacht. Wij ontkennen echter niet dat ze goedkoop vervangbaar zijn.Bij fabrieksantennes begrijp je de uitdrukking 'het is niet veel soeps'. Alleen de TYT-antenne is geschikt voor 145 MHz. Bij de tactische antennes van 124 cm en 48 cm zie je hoe de verschillende spoelen invloed hebben op de resonantiefrequentie.",
+                "block5Q2": "Tot slot blijkt verrassend genoeg dat beide Diamond-antennes als winnaars uit de test komen, met slechts een lichte terugval op 145 MHz. Op de derde plaats staat de Retevis RHD771, een verrassende prestatie. Daarna volgen de tactische antennes puur als experiment.",
+                "footer": "© 2/2025 Antennemetingen hier gepubliceerd dankzij de beheerder :-D U kunt ook uw antenne ter meting aanbieden. In de loop van de tijd worden er metingen van CB-antennes op 27 MHz toegevoegd. Tenzij anders vermeld, zijn vertalingen uit het Tsjechisch naar andere talen machinaal gegenereerd."
+            },
+            "ua": {
+                "headtitle": "Вимірювання Антен",
+                "title": "Чи справді можна замінити фірмову антену китайською підробкою?",
+                "block1": "Представлення авторів, тестів і мотивацій",
+                "block1Q1": "Руда OK2ZA",
+                "block1Q1Q1": "Руду знають майже всі ліцензовані радіоаматори, адже він, мабуть, найкращий туристичний гід у нашій країні з авіаперельотів. Якщо вам потрібно пройти транзит в аеропортах тоталітарних держав і дістатися до кінцевого пункту призначення, він вам допоможе. Але це ще не все – тут йдеться про 600 кг труб, щогл і антен, які потрібно швидко розпакувати для перевірки на наркотики та шпигунське обладнання, а потім швидко запакувати, щоб встигнути на рейс. Або ж як головний тренер з серфінгу на острові без туристів, що піднімається на 3 м над рівнем океану з 7-метровими хвилями. Для інших достатньо знати, що в деяких світових рейтингах він зі своєю командою регулярно займає 2-е місце.",
+                "block1Q1Q2": "Тож я знав, до кого звернутися з проханням про вимірювання. Про непотрібне вимірювання, як я думав, і, напевно, не лише я.",
+                "block1Q2": "Арношт905",
+                "block1Q2Q1": "Мене знають, перш за все, як людину, яку нелегко зрозуміти, бо я люблю далекі велоподорожі в компаніях, де ніхто не очікує подолати 650-1000 км запланованого маршруту. Подорожі євро-маршрутами на кордонах держав, де немає ні мобільного зв’язку, ні можливості набрати води, ні навіть сховатися в тіні чи від дощу. А членом такої велобанди є практично сліпий з радіусом огляду 9 м, який бачить знак 2×2 м, але не розрізняє його колір, або пенсіонер 81 року (зараз уже старший), перші слова якого при знайомстві були: \"Зі мною проблем не буде, я вже оплатив похорон.\" І справді, з ним проблем немає :-D Або ж хлопець після інсульту, у якого одна рука висить на гумці від шортів, підвішена до керма, і він крутить педалі лише однією ногою. Або майстер, якого витягли з шахти ліфта, і через 2 роки він знову сів на велосипед у схожому стані. :-D Так, склад наших експедицій часто саме такий, і рація відіграє важливу роль, але це ще й іграшки – ми ж усе-таки великі хлопці.",
+                "block1Q2Q2": "Спробуйте в такому складі набирати груповий виклик на сенсорному телефоні однією рукою під час руху, ага?",
+                "block1Q2Q3": "Першу Motorolu 5450 або Intek MT400 я втопив, тож купив Motorolu T-82 Extreme. Нікому не раджу повторювати – на протипаводкових валах річки Одра зв’язок зник одразу після втрати видимості через кущі. Взагалі, навіть у містах він зникає приблизно на 600 м після перетину пагорба чи просто за рогом. Тож я активував Alinco DJ-500, замовив акумулятор з Китаю й вирушив у ліси. Ну, за 200 м від телевежі – повна тиша. Але справді тиша… Тож я вибрав TYT TH-UV99 і почав купувати різні антени для покращення прийому.",
+                "block1Q2Q4": "Що тут пояснювати, коли ти з літньою людиною оглядаєш місце ночівлі, раптом налітає сліпий і кричить, що загубив паралізованого після інсульту, а ти об’їжджаєш 6 німецьких сіл без мобільного й радіозв’язку… Якщо ти маєш чути – ти мусиш чути.",
+                "block1Q2Q5": "На щастя, антени прибули, Руда має вимірювач, і до того ж у нього був час.",
+                "block1QimgQallQ1": "Каталог матеріалів",
+                "block2": "Методика вимірювання антен",
+                "block2Q1": "Так от, в лютому ви чекаєте сонячної погоди, безвітря, вимірюєте +13°C о 14:30 24.02.2025, кладете все це на капот автомобіля, дістаєте блокнот, креслите таблицю і починаєте цікаві 45 хвилин. На фото, окрім вимірювача Руди, зверху вниз:",
+                "block2Q5": "Тактичний штифт 33 см",
+                "block2Q6": "Тактичний штифт 48 см",
+                "block2Q7": "Тактичний штифт 124 см",
+                "block2Q10": "Котушки тактичних антен SMA-female та SMA-male",
+                "block2Q12": "Вимірювач RigExpert AA-1400 з перехідником на SMA-female",
+                "block3": "Ілюстративні знімки вимірювача",
+                "block3Q1": "Спочатку на сонці.",
+                "block3QimgQ1": "Вид на сонці",
+                "block3Q2": "Потім із професійним затемненням.",
+                "block3QimgQ2": "Професійне затемнення",
+                "block4": "Таблиця переможців",
+                "block4Q1": "Що стосується самих антен, то здивував оригінальний \"пендрік\" Alinco, хоч і старий, але не такий вже й поганий. А також антена Retevis, яку я раніше засудив, але вимірювання показало, що помилка була між клавіатурою та стільцем, коли я визнав її непридатною для 172 МГц.",
+                "block4Q2": "Щодо виміряних значень, то більшість знає, що значення понад 2 для стаціонарних антен – погано. Але для портативних антен, де противага змінюється з висотою над землею чи близькістю до авто, можна використовувати навіть до 4. Від 5 – вже дуже погано...",
+                "block5": "Підсумок",
+                "footer": "© 2/2025 Вимірювання антени опубліковано тут завдяки адміну :-D Ви також можете надати свою антену для вимірювання. Згодом будуть додані вимірювання CB антен на 27 МГц. Якщо не зазначено інше, переклади з чеської на інші мови створюються машиною."
+            },
+            "fr": {
+                "headtitle": "Mesure des Antennes",
+                "title": "Peut-on vraiment remplacer une antenne de marque par une imitation chinoise ?",
+                "block1": "Présentation des auteurs, des tests et des motivations",
+                "block1Q1": "Ruda OK2ZA",
+                "block1Q1Q1": "Presque tous les radioamateurs licenciés connaissent probablement Ruda, qui est sans doute le meilleur guide touristique aérien de notre pays. Si vous devez embarquer sur des vols de correspondance dans les aéroports de pays totalitaires pour atteindre une destination à l'autre bout du monde, c'est votre homme. Mais ici, on parle de 600 kg de mâts et d'antennes qu'il faut déballer rapidement pour une inspection anti-drogue, examiner à la recherche d'équipements d'espionnage cachés, puis remballer en vitesse pour ne pas rater l'avion. Ou encore, en tant qu'entraîneur principal de surf sur une île sans touristes, à trois mètres au-dessus du niveau de la mer et avec des vagues de sept mètres. Et pour le reste, il suffit de savoir qu'il est régulièrement classé deuxième avec son équipe dans certains classements mondiaux.",
+                "block1Q1Q2": "C'est donc lui que j'ai sollicité pour ces mesures. Une perte de temps, pensais-je, et je n'étais probablement pas le seul.",
+                "block1Q2": "Arnošt905",
+                "block1Q2Q1": "Je suis surtout connu pour mon goût pour le cyclotourisme longue distance, dans des groupes où personne ne s'attend vraiment à parcourir les 650 à 1000 km prévus. Voyager sur des routes européennes longeant les frontières, où il n’y a ni réseau mobile ni point d’eau, sans parler d’un abri contre le soleil ou la pluie. Et dans ces groupes, on trouve des personnages atypiques : un malvoyant avec une vision de 9 mètres, qui peut voir un panneau de 2x2 m mais pas en distinguer la couleur, ou un retraité de 81 ans (il est encore plus âgé aujourd’hui), dont les premiers mots en nous rejoignant furent : \"Ne vous inquiétez pas pour moi, j’ai déjà payé mon enterrement.\" Et effectivement, il n’a jamais posé problème. Ou encore un gars ayant survécu à un AVC, qui pédale avec une seule jambe, son bras inerte attaché à son guidon avec un élastique. Ou un autre, sorti d’une cage d’ascenseur après un accident, qui, deux ans plus tard, enfourche à nouveau son vélo… Voilà à quoi ressemblent nos expéditions. La radio est donc essentielle – et c'est aussi un jouet pour nous, grands enfants.",
+                "block1Q2Q2": "Essayez donc de passer un appel de groupe sur un smartphone tactile en roulant, avec une seule main...",
+                "block1Q2Q3": "J'ai noyé ma première Motorola 5450 et mon Intek MT400, alors j'ai acheté une Motorola T-82 Extreme. Mauvaise idée : sur les digues anti-inondation de la rivière Oder, dès qu’un buisson cachait la vue, la communication s’interrompait. Même en ville, au-delà de 600 mètres ou derrière un simple coin de rue, la connexion tombait. J'ai donc activé mon Alinco DJ-500, commandé une batterie en Chine et pris la route. Mais à 200 mètres d’un émetteur TV, silence radio total… J’ai alors opté pour une TYT TH-UV99 et multiplié les achats d’antennes pour améliorer la réception.",
+                "block1Q2Q4": "Que dire… Quand vous êtes en reconnaissance d'un bivouac avec un vieillard, qu’un malvoyant arrive en panique parce qu’il a perdu un compagnon victime d’un AVC, et que vous partez à sa recherche à travers six villages allemands sans réseau mobile ni radio… Quand on est dur d’oreille, il faut savoir écouter.",
+                "block1Q2Q5": "Heureusement, les antennes sont arrivées, Ruda avait un analyseur et du temps.",
+                "block1QimgQallQ1": "Catalogue du matériel",
+                "block2": "Méthodologie de mesure des antennes",
+                "block2Q1": "Un jour de février, on attend une météo ensoleillée, sans vent, on mesure 13°C à 14h30, on pose tout sur le capot avant de la voiture, on sort son bloc-notes, on esquisse un tableau et on entame 45 minutes passionnantes. Sur la photo, en plus de l’analyseur de Ruda, on voit de haut en bas :",
+                "block2Q5": "Antenne tactique 33 cm",
+                "block2Q6": "Antenne tactique 48 cm",
+                "block2Q7": "Antenne tactique 124 cm",
+                "block2Q10": "Bobines des antennes tactiques sma-female et sma-male",
+                "block2Q12": "Analyseur RigExpert AA-1400 avec adaptateur sma-female",
+                "block3": "Aperçus illustratifs de l'analyseur",
+                "block3Q1": "D'abord en plein soleil.",
+                "block3QimgQ1": "Vue en plein soleil",
+                "block3Q2": "Puis avec un ombrage professionnel.",
+                "block3QimgQ2": "Ombre professionnelle",
+                "block4": "Tableau des gagnants",
+                "block4Q1": "Parmi les antennes testées, la surprise vient de l'antenne d’origine Alinco, un modèle ancien mais toujours performant, ainsi que de l'antenne Retevis, que j'avais jugée inutilisable sur 172 MHz – erreur de ma part. Sur 446 MHz, nous n'avons pas mesuré, car ces antennes ne sont pas censées être utilisées sur PMR.",
+                "block4Q2": "Concernant les valeurs mesurées, la plupart savent qu’un SWR supérieur à 2 est problématique pour une antenne fixe. Pour les talkies-walkies, la contrepartie varie en fonction de la hauteur et de la proximité d'un véhicule, et une valeur jusqu'à 4 reste exploitable. À partir de 5, c’est vraiment mauvais… Quant à une valeur de 20, c’est l’infini – et ce n'est pas le genre d’infini joyeux de Dan Nekonečný.",
+                "block4Q3": "Les antennes \"tactiques\" posent un autre problème : la bobine devrait être spécifique à chaque longueur. Ici, elle est la même par souci d'économie, mais varie selon les connecteurs. Même entre connecteurs identiques, on constate des différences… Et en plus, la conception mécanique n’est pas idéale : au lieu d’un simple ruban métallique, ce sont deux bandes collées dos à dos, ce qui dégrade progressivement les performances.",
+                "block4Q4": "Comme nous n’avions qu’un seul adaptateur sur l'analyseur, nous avons utilisé un connecteur SMA-SMA mâle/mâle pour les antennes sma-female. Cela a sûrement eu un impact minime, mais négligeable ici.",
+                "tabQmainQth": "Antenne / SWR selon la fréquence",
+                "block5": "Conclusion",
+                "block5Q1": "Les antennes d'usine ? Certaines \"valent du caoutchouc\"... Seule l’antenne TYT est vraiment adaptée aux 145 MHz. Sur les modèles tactiques 124 cm et 48 cm, la différence de bobine selon le connecteur influe sur la résonance : une simple modification pourrait les adapter soit aux 172 MHz partagés, soit aux 70 cm universels. Nous avons noté avec amusement que toutes ces combinaisons d’antennes émettaient particulièrement bien… sur des fréquences entre 660 et 780 MHz, utilisées par d’autres services. Un \"héritage\" des antennes russes destinées aux Baofeng UV-5R après l’invasion de l’Ukraine en 2022, où l’émission-réception en retour n’était plus vraiment une priorité…",
+                "block5Q2": "Un coup d’œil au tableau révèle un podium surprenant : les deux Diamond en tête, malgré un léger raté sur 145 MHz. En troisième place, la Retevis RHD771, une vraie révélation. Ensuite, place aux expérimentations avec les antennes tactiques.",
+                "footer": "© 2/2025 Mesures d'antenne publiées ici grâce à l'admin :-D Vous pouvez également fournir votre antenne pour la mesure. Au fil du temps, des mesures d'antennes CB sur 27MHz seront ajoutées. Sauf indication contraire, les traductions du tchèque vers d'autres langues sont générées automatiquement."
+            }
+
+
+
+        };
+
+        // Funkce na změnu jazyka
+        function changeLanguage(lang) {
+            localStorage.setItem("preferredLang", lang);
+            document.querySelectorAll("[data-key]").forEach(element => {
+                const key = element.getAttribute("data-key");
+                if (translations[lang] && translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            const savedLang = localStorage.getItem("preferredLang") || "cs";
+            changeLanguage(savedLang);
+        });
+        // Event listener na kliknutí vlajky
+        document.querySelectorAll(".flag-btn").forEach(button => {
+            button.addEventListener("click", () => {
+                const lang = button.getAttribute("data-lang");
+                changeLanguage(lang);
+            });
+        });
+    </script>
+</body>
+
+</html>
+<!-- <script>
+    function changeLanguage(lang) {
+        const translations = {
+            "cs": {
+                "header": "Měřicí protokol",
+                "description": "Tento dokument obsahuje měření antén ručních vysílaček."
+            },
+            "en": {
+                "header": "Measurement Protocol",
+                "description": "This document contains measurements of handheld radio antennas."
+            }
+        };
+        
+        document.getElementById("header").innerText = translations[lang].header;
+        document.getElementById("description").innerText = translations[lang].description;
+    }
+</script>
+</head>
+<body onload="changeLanguage('cs')">
+<button onclick="changeLanguage('cs')">🇨🇿 Čeština</button>
+<button onclick="changeLanguage('en')">🇬🇧 English</button>
+
+<h1 id="header">Měřicí protokol</h1>
+<p id="description">Tento dokument obsahuje měření antén ručních vysílaček.</p>
+</body>
+</html> -->
+
+<!-- <div class="flags">
+    <button class="flag-btn" data-lang="cs" onclick="changeLanguage('cs')" title="Čeština">🇨🇿</button>
+    <button class="flag-btn" data-lang="en" onclick="changeLanguage('en')" title="English">🇬🇧</button>
+    <button class="flag-btn" data-lang="de" onclick="changeLanguage('de')" title="Deutsch">🇩🇪</button>
+    <button class="flag-btn" data-lang="it" onclick="changeLanguage('it')" title="Italiano">🇮🇹</button>
+    <button class="flag-btn" data-lang="ru" onclick="changeLanguage('ru')" title="Русский">🇷🇺</button>
+    <button class="flag-btn" data-lang="uk" onclick="changeLanguage('uk')" title="Українська">🇺🇦</button>
+    <button class="flag-btn" data-lang="sk" onclick="changeLanguage('sk')" title="Slovenčina">🇸🇰</button>
+    <button class="flag-btn" data-lang="nl" onclick="changeLanguage('nl')" title="Nederlands">🇳🇱</button>
+    <button class="flag-btn" data-lang="fr" onclick="changeLanguage('fr')" title="Français">🇫🇷</button>
+    <button class="flag-btn" data-lang="es" onclick="changeLanguage('es')" title="Español">🇪🇸</button>
+    <button class="flag-btn" data-lang="hu" onclick="changeLanguage('hu')" title="Magyar">🇭🇺</button>
+</div> -->
+
+<!-- <div class="flags">
+    <button class="flag-btn" data-lang="cs" onclick="changeLanguage('cs')" title="Čeština">
+        <img src="/flags/cs.png" alt="Čeština">
+    </button>
+    <button class="flag-btn" data-lang="en" onclick="changeLanguage('en')" title="English">
+        <img src="/flags/en.png" alt="English">
+    </button>
+    <button class="flag-btn" data-lang="de" onclick="changeLanguage('de')" title="Deutsch">
+        <img src="/flags/de.png" alt="Deutsch">
+    </button>
+    <button class="flag-btn" data-lang="it" onclick="changeLanguage('it')" title="Italiano">
+        <img src="/flags/it.png" alt="Italiano">
+    </button>
+    <button class="flag-btn" data-lang="ru" onclick="changeLanguage('ru')" title="Русский">
+        <img src="/flags/ru.png" alt="Русский">
+    </button>
+    <button class="flag-btn" data-lang="uk" onclick="changeLanguage('uk')" title="Українська">
+        <img src="/flags/uk.png" alt="Українська">
+    </button>
+    <button class="flag-btn" data-lang="sk" onclick="changeLanguage('sk')" title="Slovenčina">
+        <img src="/flags/sk.png" alt="Slovenčina">
+    </button>
+    <button class="flag-btn" data-lang="nl" onclick="changeLanguage('nl')" title="Nederlands">
+        <img src="/flags/nl.png" alt="Nederlands">
+    </button>
+    <button class="flag-btn" data-lang="fr" onclick="changeLanguage('fr')" title="Français">
+        <img src="/flags/fr.png" alt="Français">
+    </button>
+    <button class="flag-btn" data-lang="es" onclick="changeLanguage('es')" title="Español">
+        <img src="/flags/es.png" alt="Español">
+    </button>
+    <button class="flag-btn" data-lang="hu" onclick="changeLanguage('hu')" title="Magyar">
+        <img src="/flags/hu.png" alt="Magyar">
+    </button>
+</div> -->
